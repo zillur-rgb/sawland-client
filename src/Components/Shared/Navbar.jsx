@@ -6,10 +6,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 w-full lg:w-3/4 mx-auto">
       <div className="navbar-start">
-        <Link
-          to="/"
-          className=" text-primary btn btn-ghost normal-case text-2xl"
-        >
+        <Link to="/" className=" text-main btn btn-ghost normal-case text-2xl">
           Sawland
         </Link>
       </div>
@@ -30,7 +27,7 @@ const Navbar = () => {
         </div>
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
-            <RiMenu3Fill className="text-3xl text-primary" />
+            <RiMenu3Fill className="text-3xl text-main" />
           </label>
           <ul
             tabIndex="0"
