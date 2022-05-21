@@ -9,7 +9,7 @@ const Hero = () => {
           className="hidden sm:block sm:max-w-sm lg:max-w-md  rounded-lg shadow-2xl"
         />
         <div className="w-5/6 lg:w-1/2">
-          <h1 className="text-5xl font-bold leading-15 text-header">
+          <h1 className="text-2xl sm:text-5xl font-bold leading-15 text-header">
             We Manufacture Worldclass Saw Products
           </h1>
           <p className="py-6 text-text">
