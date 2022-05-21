@@ -1,0 +1,56 @@
+import React from "react";
+import { RiMenu3Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  return (
+    <div className="navbar bg-base-100 w-full lg:w-3/4 mx-auto">
+      <div className="navbar-start">
+        <Link
+          to="/"
+          className=" text-primary btn btn-ghost normal-case text-2xl"
+        >
+          Sawland
+        </Link>
+      </div>
+
+      <div className="navbar-end">
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <a>Products</a>
+            </li>
+            <li>
+              <a>Blogs</a>
+            </li>
+          </ul>
+        </div>
+        <div className="dropdown">
+          <label tabIndex="0" className="btn btn-ghost lg:hidden">
+            <RiMenu3Fill className="text-3xl text-primary" />
+          </label>
+          <ul
+            tabIndex="0"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 px-15 py-5"
+          >
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <a>Products</a>
+            </li>
+            <li>
+              <a>Blogs</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
