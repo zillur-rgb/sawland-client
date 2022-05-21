@@ -27,11 +27,11 @@ const Navbar = () => {
         </div>
         <div className="dropdown">
           <label tabIndex="0" className="btn btn-ghost lg:hidden">
-            <RiMenu3Fill className="text-3xl text-main" />
+            <RiMenu3Fill className="text-3xl text-main mr-30" />
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 px-15 py-5"
+            className="menu menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-box "
           >
             <li>
               <Link to="/">Home</Link>

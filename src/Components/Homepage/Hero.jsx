@@ -2,9 +2,12 @@ import hero from "../../Assets/hero.jpg";
 
 const Hero = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-main bg-opacity-20">
       <div className="hero-content flex-col-reverse justify-between lg:flex-row-reverse">
-        <img src={hero} className="max-w-md  rounded-lg shadow-2xl" />
+        <img
+          src={hero}
+          className="hidden sm:block sm:max-w-sm lg:max-w-md  rounded-lg shadow-2xl"
+        />
         <div className="w-5/6 lg:w-1/2">
           <h1 className="text-5xl font-bold leading-15 text-header">
             We Manufacture Worldclass Saw Products

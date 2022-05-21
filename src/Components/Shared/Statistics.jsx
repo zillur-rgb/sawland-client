@@ -2,7 +2,7 @@ import React from "react";
 
 const Statistics = () => {
   return (
-    <div className="stats shadow w-3/5 flex items-center justify-between mx-auto my-60">
+    <div className="stats shadow w-3/5 flex flex-col lg:flex-row items-center justify-between mx-auto my-60">
       <div className="stat place-items-center">
         <div className="stat-title">Products</div>
         <div className="stat-value">9</div>
