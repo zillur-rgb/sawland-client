@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ToolsContext from "../../ToolsContext/ToolsContext";
 
 const AllProducts = () => {
@@ -26,9 +27,11 @@ const AllProducts = () => {
                 Price:{" "}
                 <span className="text-text font-bold">€{tool.price}</span>
               </p>
-              <button className="btn bg-main border-none hover:bg-hover">
-                Purchase Now
-              </button>
+              <Link to={`/tools/${tool._id}`}>
+                <button className="btn bg-main border-none hover:bg-hover">
+                  Purchase Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>

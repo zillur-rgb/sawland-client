@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import ToolsContext from "../../ToolsContext/ToolsContext";
 
 const NewProducts = () => {
   const { tools } = useContext(ToolsContext);
   return (
-    <div className="w-3/4 mx-auto">
+    <div className="w-3/4 mx-auto my-30">
       <h1 className="text-main font-bold my-60 text-3xl text-center">
         Newly Added Tools
       </h1>
@@ -30,9 +31,11 @@ const NewProducts = () => {
                   Price:{" "}
                   <span className="text-text font-bold">€{tool.price}</span>
                 </p>
-                <button className="btn bg-main border-none hover:bg-hover">
-                  Purchase Now
-                </button>
+                <Link to={`/tools/${tool._id}`}>
+                  <button className="btn bg-main border-none hover:bg-hover">
+                    Purchase Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
