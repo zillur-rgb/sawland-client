@@ -2,17 +2,38 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
+import Loading from "../Components/Shared/Loading";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm();
+
+  if (user || gUser) {
+    navigate("/");
+  }
+  if (loading || gLoading) {
+    return <Loading />;
+  }
+  let errorMessage = "";
+  if (error || gError) {
+    errorMessage = "Error Signing Up";
+  }
   const onSubmit = (data) => {
-    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
     reset();
   };
   return (
@@ -64,6 +85,7 @@ const Login = () => {
             Login
           </button>
         </div>
+        <h1 className="text-red-500">{errorMessage}</h1>
       </form>
       <div>
         <div className="flex flex-col items-center justify-between">
@@ -87,7 +109,10 @@ const Login = () => {
         </div>
         <div className="divider max-w-lg">OR</div>
       </div>
-      <button className="btn btn-ghost bg-none border border-main  w-full max-w-sm capitalize text-text">
+      <button
+        onClick={() => signInWithGoogle()}
+        className="btn btn-ghost bg-none border border-main  w-full max-w-sm capitalize text-text"
+      >
         <FcGoogle className=" text-2xl" /> Signin with Google
       </button>
     </div>
