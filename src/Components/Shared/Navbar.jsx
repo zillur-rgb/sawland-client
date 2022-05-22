@@ -29,6 +29,9 @@ const Navbar = () => {
             <li>
               <Link to="/">Dashboard</Link>
             </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
           </ul>
         </div>
         <div className="dropdown">
@@ -54,6 +57,9 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </div>
