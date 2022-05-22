@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Pole Saw",
+    "image": "https://i.ibb.co/Btgd337/pole-saw.jpg",
+    "desc": "The pole of this saw can be extended up to a maximum of 16 feet depending on the specific model. The blade measures 6 to 8 inches and is generally used to prune trees.",
+    "BestFor": "Pruning trees.",
+    "price": 29,
+    "stock": "3100"
+  },
+  {
+    "name": "Veneer Saw",
+    "image": "https://i.ibb.co/hm2Z6Bz/Veneer-Saw.jpg",
+    "desc": "As the name has it, this saw is specifically used for veneer works. The veneer saw has a short blade with 13 teeth per inch and is pointed on both sides. You won’t normally find this saw being used for any other cutting apart from veneer works.",
+    "BestFor": "Veneer works.",
+    "price": "17",
+    "stock": "2000"
+  },
+  {
+    "name": "Portable Band Saw",
+    "image": "https://i.ibb.co/bJWDwDS/Portable-Band-Saw.jpg",
+    "desc": "It is the portable version of the stationary band saw allowing you to carry it anywhere and perform the cutting tasks.But with this, you can only cut pipes up to a maximum diameter of 3 to 4 inches.",
+    "BestFor": "Making curve cuts in small diameter pipes.",
+    "price": "79",
+    "stock": "2300"
+  },
+  {
+    "name": "Chainsaw",
+    "image": "https://i.ibb.co/CnnNGcx/Chain-Saw.jpg",
+    "desc": "The most popular and the most widely used saw for cutting wood logs and chopping trees. The blade is covered by a chain with sharp teeth that rips the wood while cutting. Chainsaws fall into the group of band saw",
+    "BestFor": "Cutting wood and chopping trees.",
+    "price": "279",
+    "stock": "1400"
+  },
+  {
+    "name": "Flooring Saw",
+    "image": "https://i.ibb.co/KKsyhYk/Flooring-Saw.jpg",
+    "desc": "The flooring saw is a specialized saw that is used to resaw flooring. The saw is portable which saves a lot of time as you do have to spend time moving the materials.",
+    "BestFor": "Resaw and cut flooring.",
+    "price": "175",
+    "stock": "3900"
+  },
+  {
+    "name": "Oscillating Saw",
+    "image": "https://i.ibb.co/Xs7k0CJ/Oscillating-Saw.jpg",
+    "desc": "As the name implies, it has an oscillating blade located at one end. You can change the blade depending on the material you want to cut. Apart from cutting, you can also grind, remove caulk or grout, and scrap materials.",
+    "BestFor": "Cut, grind, and scrap materials.",
+    "price": "105",
+    "stock": "1500"
+  },
+  {
+    "name": "Reciprocating Saw",
+    "image": "https://i.ibb.co/y8ShPpY/Reciprocating-Saw.jpg",
+    "desc": "The reciprocating saw features a short blade that moves back and forth to cut the materials. Using the reciprocating saw, you can cut wood and plastics. You can also use it to cut below the walls or joints made by woods as the saw is capable of cutting nails as well.",
+    "BestFor": "Cutting walls and wood joints.",
+    "price": "75",
+    "stock": "1900"
+  },
+  {
+    "name": "Rotary Saw",
+    "image": "https://i.ibb.co/v1WMrYz/Rotary-Saw.jpg",
+    "desc": "The reciprocating saw features a short blade that moves back and forth to cut the materials. Using the reciprocating saw, you can cut wood and plastics. You can also use it to cut below the walls or joints made by woods as the saw is capable of cutting nails as well.",
+    "BestFor": "Making cuts in concrete walls.",
+    "price": "65",
+    "stock": "1900"
+  },
+  {
+    "name": "Tile Saw",
+    "image": "https://i.ibb.co/bdP1mxf/Tile-Saw.jpg",
+    "desc": "The tile saw uses a blade that is coated with diamond to make cuts on hard surfaces. It has a water cooling system that prevents it from overheating. For ensuring straight cuts, it comes with a miter.",
+    "BestFor": "Cutting glass and ceramic tiles.",
+    "price": "120",
+    "stock": "1900"
+  }
+]
