@@ -2,7 +2,7 @@ import hero from "../../Assets/hero.jpg";
 
 const Hero = () => {
   return (
-    <div className="hero min-h-screen bg-main bg-opacity-20">
+    <div className="hero min-h-screen gitbg-main bg-opacity-20">
       <div className="hero-content flex-col-reverse justify-between lg:flex-row-reverse">
         <img
           src={hero}
