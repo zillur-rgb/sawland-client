@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -22,8 +22,11 @@ const Login = () => {
     reset,
   } = useForm();
 
+  const location = useLocation();
+
+  let from = location.state?.from?.pathname || "/";
   if (user || gUser) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
   if (loading || gLoading) {
     return <Loading />;

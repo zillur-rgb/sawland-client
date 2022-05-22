@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import Details from "./Details";
 import ForgetPassword from "./ForgetPassword";
 import Homepage from "./Homepage";
@@ -18,7 +19,14 @@ const Allpages = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
-      <Route path="/tools/:id" element={<Details />} />
+      <Route
+        path="/tools/:id"
+        element={
+          <RequireAuth>
+            <Details />
+          </RequireAuth>
+        }
+      />
       <Route path="/verifyemail" element={<VerifyEmail />} />
     </Routes>
   );
