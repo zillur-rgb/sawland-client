@@ -4,6 +4,7 @@ import Services from "../Components/Homepage/Services";
 import BestSellingProducts from "../Components/Products/BestSellingProducts";
 import NewProducts from "../Components/Products/NewProducts";
 import Statistics from "../Components/Shared/Statistics";
+import Reviews from "../Components/Homepage/Reviews";
 
 const Homepage = () => {
   return (
@@ -13,6 +14,7 @@ const Homepage = () => {
       <Services />
       <BestSellingProducts />
       <NewProducts />
+      <Reviews />
     </div>
   );
 };

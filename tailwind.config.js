@@ -1,6 +1,10 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Poppins"],
+      text: ["Lato"],
+    },
     extend: {
       spacing: {
         10: "10px",
@@ -28,10 +32,6 @@ module.exports = {
         hover: "#e64206",
         header: "#222f3e",
         text: "#57606f",
-      },
-      fontFamily: {
-        header: ["Ubuntu"],
-        text: ["Lato"],
       },
     },
   },

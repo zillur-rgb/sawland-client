@@ -23,6 +23,12 @@ const Navbar = () => {
             <li>
               <a>Blogs</a>
             </li>
+            <li>
+              <a>Reviews</a>
+            </li>
+            <li>
+              <a>Dashboard</a>
+            </li>
           </ul>
         </div>
         <div className="dropdown">
@@ -42,6 +48,12 @@ const Navbar = () => {
             </li>
             <li>
               <a>Blogs</a>
+            </li>
+            <li>
+              <a>Reviews</a>
+            </li>
+            <li>
+              <a>Dashboard</a>
             </li>
           </ul>
         </div>
