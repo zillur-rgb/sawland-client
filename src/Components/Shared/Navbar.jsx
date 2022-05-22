@@ -4,6 +4,7 @@ import { RiMenu3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
+import { signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
@@ -38,7 +39,9 @@ const Navbar = () => {
             </li>
             <li>
               {user ? (
-                <button className="text-red-500">Logout</button>
+                <button onClick={() => signOut(auth)} className="text-red-500">
+                  Logout
+                </button>
               ) : (
                 <Link to="/login">Login</Link>
               )}
@@ -71,7 +74,9 @@ const Navbar = () => {
             </li>
             <li>
               {user ? (
-                <button className="text-red-500">Logout</button>
+                <button onClick={() => signOut(auth)} className="text-red-500">
+                  Logout
+                </button>
               ) : (
                 <Link to="/login">Login</Link>
               )}
