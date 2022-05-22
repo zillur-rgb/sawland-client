@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useHistory, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
+import Loading from "../Components/Shared/Loading";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [updateProfile, updating, Uerror] = useUpdateProfile(auth);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const navigate = useNavigate();
+
+  if (user) {
+    navigate("/");
+  }
+  if (loading || updating) {
+    return <Loading />;
+  }
+  let errorMessage = "";
+  if (error || Uerror) {
+    errorMessage = "Error Signing Up";
+  }
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({
+      displayName: data.fullname,
+    });
     reset();
   };
   return (
@@ -88,6 +114,8 @@ const SignUp = () => {
               </span>
             )}
           </label>
+
+          {errorMessage}
 
           <button className="btn bg-main border-none hover:bg-hover">
             Sign Up

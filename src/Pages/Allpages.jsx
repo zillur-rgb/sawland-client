@@ -7,6 +7,7 @@ import Login from "./Login";
 import Reviews from "./Reviews";
 import SignUp from "./SignUp";
 import Tools from "./Tools";
+import VerifyEmail from "./VerifyEmail";
 
 const Allpages = () => {
   return (
@@ -18,6 +19,7 @@ const Allpages = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route path="/tools/:id" element={<Details />} />
+      <Route path="/verifyemail" element={<VerifyEmail />} />
     </Routes>
   );
 };

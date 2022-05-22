@@ -1,8 +1,15 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { RiMenu3Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import Loading from "./Loading";
 
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="navbar my-15 bg-base-100 w-full lg:w-3/4 mx-auto">
       <div className="navbar-start">
@@ -30,7 +37,11 @@ const Navbar = () => {
               <Link to="/">Dashboard</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              {user ? (
+                <button className="text-red-500">Logout</button>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>
@@ -59,7 +70,11 @@ const Navbar = () => {
               <Link to="/">Dashboard</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              {user ? (
+                <button className="text-red-500">Logout</button>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>
