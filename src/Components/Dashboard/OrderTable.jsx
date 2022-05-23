@@ -11,16 +11,17 @@ const OrderTable = ({ order, handleDelete, setModal }) => {
         <td>{order?.quantity}</td>
         <td>€{order?.total}</td>
         <td>{order?.city}</td>
-        <td>
+        <td className="flex gap-20">
           <button htmlFor="my-modal"></button>
           <label
             htmlFor="my-modal"
             // onClick={() => setModal(order)}
             onClick={() => handleDelete(order._id)}
-            className="btn bg-main modal-button text-text hover:text-white bg-opacity-25"
+            className="btn bg-main hover:bg-red-600 modal-button text-text hover:text-white bg-opacity-25"
           >
             cancel
           </label>
+          <button className="btn bg-main">Pay Now</button>
         </td>
       </tr>
 

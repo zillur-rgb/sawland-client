@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import Loading from "../Components/Shared/Loading";
+import useToken from "../hooks/useToken";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,9 +24,10 @@ const Login = () => {
   } = useForm();
 
   const location = useLocation();
-
+  const [token] = useToken(user || gUser);
   let from = location.state?.from?.pathname || "/";
-  if (user || gUser) {
+
+  if (token) {
     navigate(from, { replace: true });
   }
   if (loading || gLoading) {
