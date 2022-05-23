@@ -14,8 +14,17 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?email=${user?.email}`)
-        .then((res) => res.json())
+      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            localStorage.removeItem("accessToken");
+          }
+          return res.json();
+        })
         .then((data) => setMyOrders(data));
     }
   }, [user]);
