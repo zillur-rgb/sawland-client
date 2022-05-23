@@ -1,6 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddReview from "../Components/Dashboard/AddReview";
+import MyOrders from "../Components/Dashboard/MyOrders";
+import MyProfile from "../Components/Dashboard/MyProfile";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
+import Dashboard from "./Dashboard";
 import Details from "./Details";
 import ForgetPassword from "./ForgetPassword";
 import Homepage from "./Homepage";
@@ -15,6 +19,11 @@ const Allpages = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/tools" element={<Tools />} />
+      <Route path="/dashboard" element={<Dashboard />}>
+        <Route index element={<MyOrders />} />
+        <Route path="addreview" element={<AddReview />} />
+        <Route path="myprofile" element={<MyProfile />} />
+      </Route>
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
