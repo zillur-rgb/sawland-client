@@ -1,10 +1,11 @@
-import React, { isValidElement } from "react";
+import React, { isValidElement, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
-const OrderForm = ({ stock, price }) => {
+const OrderForm = ({ stock, price, _id, sold }) => {
+  const [quantity, setQuantity] = useState(0);
   const {
     register,
     handleSubmit,
@@ -36,7 +37,20 @@ const OrderForm = ({ stock, price }) => {
     })
       .then((res) => res.json())
       .then((order) => toast.success("Order is placed succesfully"));
-    console.log(newOrder);
+
+    const updatedTool = {
+      stock: stock - quantity,
+      sold: +(sold + quantity),
+    };
+    fetch(`http://localhost:5000/tools/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedTool),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
     reset();
   };
   return (
@@ -80,6 +94,9 @@ const OrderForm = ({ stock, price }) => {
                 required: true,
                 min: 100,
                 max: stock,
+                onChange: (e) => {
+                  setQuantity(e.target.value);
+                },
               })}
             />
             <label className="label">
@@ -95,13 +112,15 @@ const OrderForm = ({ stock, price }) => {
               )}
               {errors.quantity?.type === "required" && (
                 <span className="font-bold text-red-500 label-text-alt">
-                  Quntity is required
+                  Quantity is required
                 </span>
               )}
             </label>
           </div>
           <div className="price ml-30">
-            <p className="text-lg font-semibold">x €{price}</p>
+            <p className="text-lg font-semibold">
+              x €{price} = Total {price * quantity}
+            </p>
           </div>
         </div>
         <div className="flex items-center flex-row gap-20">
@@ -136,9 +155,18 @@ const OrderForm = ({ stock, price }) => {
             />
           </div>
         </div>
-        <button className=" my-3 btn btn-primary font-text bg-main border-none hover:bg-hover w-full">
-          Order Now
-        </button>
+        {quantity < 100 || quantity > stock ? (
+          <button
+            disabled
+            className="my-3 btn btn-primary font-text bg-main border-none hover:bg-hover w-full"
+          >
+            Order Now
+          </button>
+        ) : (
+          <button className="my-3 btn btn-primary font-text bg-main border-none hover:bg-hover w-full">
+            Order Now
+          </button>
+        )}
       </form>
       <p className="opacity-70 text-text font-text">
         Minimum order quantity: 100

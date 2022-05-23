@@ -7,12 +7,12 @@ export function ToolsProvider({ children }) {
   // console.log(reviews);
   // console.log(tools);
   useEffect(() => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/tools")
+    fetch("http://localhost:5000/tools")
       .then((res) => res.json())
       .then((data) => setTools(...tools, data));
   }, []);
   useEffect(() => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews")
+    fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(...reviews, data));
   }, []);
