@@ -27,7 +27,7 @@ const ProductDetails = ({ tool }) => {
           </div>
         </div>
       </div>
-      <OrderForm stock={stock} price={price} />
+      <OrderForm stock={tool?.stock} price={tool?.price} />
     </div>
   );
 };

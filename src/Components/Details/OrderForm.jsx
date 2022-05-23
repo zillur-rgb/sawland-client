@@ -3,8 +3,7 @@ import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-import { data } from "autoprefixer";
-
+import { toast } from "react-toastify";
 const OrderForm = ({ stock, price }) => {
   const {
     register,
@@ -18,7 +17,26 @@ const OrderForm = ({ stock, price }) => {
     return <Loading />;
   }
   const onSubmit = (data) => {
-    console.log(data);
+    const { name, email, quantity, city, postcode, country } = data;
+    const newOrder = {
+      name,
+      email,
+      quantity,
+      city,
+      postcode,
+      country,
+    };
+
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newOrder),
+    })
+      .then((res) => res.json())
+      .then((order) => toast.success("Order is placed succesfully"));
+    console.log(newOrder);
     reset();
   };
   return (
@@ -31,7 +49,7 @@ const OrderForm = ({ stock, price }) => {
           <input
             type="text"
             value={user?.displayName || " "}
-            disabled
+            {...register("name")}
             readOnly
             className="input input-bordered w-full"
           />
@@ -42,12 +60,10 @@ const OrderForm = ({ stock, price }) => {
           </label>
           <input
             type="text"
-            disabled
             value={user?.email || " "}
             className="input input-bordered w-full"
-            {...register("quantity", {
-              required: true,
-            })}
+            readOnly
+            {...register("email")}
           />
         </div>
         <div className="total flex items-center">
@@ -106,7 +122,7 @@ const OrderForm = ({ stock, price }) => {
             <input
               type="number"
               className="input input-bordered w-full"
-              {...register("Postcode")}
+              {...register("postcode")}
             />
           </div>
           <div className="country">
@@ -121,7 +137,7 @@ const OrderForm = ({ stock, price }) => {
           </div>
         </div>
         <button className=" my-3 btn btn-primary font-text bg-main border-none hover:bg-hover w-full">
-          Go to Checkout Page
+          Order Now
         </button>
       </form>
       <p className="opacity-70 text-text font-text">
