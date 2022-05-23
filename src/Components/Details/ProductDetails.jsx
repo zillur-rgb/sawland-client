@@ -34,6 +34,7 @@ const ProductDetails = ({ tool }) => {
         sold={tool?.sold}
         price={tool?.price}
         _id={tool?._id}
+        toolName={tool?.name}
       />
     </div>
   );

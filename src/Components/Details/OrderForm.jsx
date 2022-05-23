@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
-const OrderForm = ({ stock, price, _id, sold }) => {
+const OrderForm = ({ stock, price, _id, sold, toolName }) => {
   const [quantity, setQuantity] = useState(0);
   const {
     register,
@@ -26,6 +26,8 @@ const OrderForm = ({ stock, price, _id, sold }) => {
       city,
       postcode,
       country,
+      total: quantity * price,
+      toolName,
     };
 
     fetch("http://localhost:5000/orders", {

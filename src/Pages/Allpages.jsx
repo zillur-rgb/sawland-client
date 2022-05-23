@@ -19,7 +19,14 @@ const Allpages = () => {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/tools" element={<Tools />} />
-      <Route path="/dashboard" element={<Dashboard />}>
+      <Route
+        path="/dashboard"
+        element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }
+      >
         <Route index element={<MyOrders />} />
         <Route path="addreview" element={<AddReview />} />
         <Route path="myprofile" element={<MyProfile />} />
