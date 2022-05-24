@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AddReview from "../Components/Dashboard/AddReview";
 import MyOrders from "../Components/Dashboard/MyOrders";
 import MyProfile from "../Components/Dashboard/MyProfile";
+import Users from "../Components/Dashboard/Users";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import Dashboard from "./Dashboard";
 import Details from "./Details";
@@ -30,6 +31,7 @@ const Allpages = () => {
         <Route index element={<MyOrders />} />
         <Route path="addreview" element={<AddReview />} />
         <Route path="myprofile" element={<MyProfile />} />
+        <Route path="users" element={<Users />} />
       </Route>
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/login" element={<Login />} />

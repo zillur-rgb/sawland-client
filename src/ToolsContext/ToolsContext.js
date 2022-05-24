@@ -4,6 +4,7 @@ const ToolsContext = createContext();
 export function ToolsProvider({ children }) {
   const [tools, setTools] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [users, setUsers] = useState([]);
   // console.log(reviews);
   // console.log(tools);
   useEffect(() => {
@@ -17,6 +18,12 @@ export function ToolsProvider({ children }) {
       .then((data) => setReviews(...reviews, data));
   }, []);
 
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(users.concat(data)));
+  }, []);
+
   return (
     <ToolsContext.Provider
       value={{
@@ -24,6 +31,8 @@ export function ToolsProvider({ children }) {
         setTools,
         reviews,
         setReviews,
+        users,
+        setUsers,
       }}
     >
       {children}

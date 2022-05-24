@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
 const OrderForm = ({ stock, price, _id, sold, toolName }) => {
   const [quantity, setQuantity] = useState(0);
   const {
@@ -51,7 +52,12 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
       },
       body: JSON.stringify(updatedTool),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          signOut(auth);
+        }
+        return res.json();
+      })
       .then((data) => console.log(data));
     reset();
   };
@@ -94,7 +100,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
               onChange={onChange}
               {...register("quantity", {
                 required: true,
-                min: 100,
+                min: 20,
                 max: stock,
                 onChange: (e) => {
                   setQuantity(e.target.value);
@@ -104,7 +110,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
             <label className="label">
               {errors.quantity?.type === "min" && (
                 <span className="font-bold text-red-500 label-text-alt">
-                  Minimum 100 Pieces
+                  Minimum 20 Pieces
                 </span>
               )}
               {errors.quantity?.type === "max" && (

@@ -5,11 +5,14 @@ import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 import DeleteModal from "./DeleteModal";
 import OrderTable from "./OrderTable";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const MyOrders = () => {
   const [myOrders, setMyOrders] = useState([]);
   const [user, loading] = useAuthState(auth);
   const [modal, setModal] = useState(null);
+  const navigate = useNavigate("/");
   console.log(myOrders);
 
   useEffect(() => {
@@ -21,7 +24,9 @@ const MyOrders = () => {
       })
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
+            signOut(auth);
             localStorage.removeItem("accessToken");
+            navigate("/");
           }
           return res.json();
         })
