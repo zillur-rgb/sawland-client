@@ -28,9 +28,9 @@ const Allpages = () => {
           </RequireAuth>
         }
       >
-        <Route index element={<MyOrders />} />
+        <Route path="myorders" element={<MyOrders />} />
         <Route path="addreview" element={<AddReview />} />
-        <Route path="myprofile" element={<MyProfile />} />
+        <Route index element={<MyProfile />} />
         <Route path="users" element={<Users />} />
       </Route>
       <Route path="/reviews" element={<Reviews />} />

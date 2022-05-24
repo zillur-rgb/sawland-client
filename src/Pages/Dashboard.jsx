@@ -1,7 +1,17 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, Outlet } from "react-router-dom";
+import Loading from "../Components/Shared/Loading";
+import auth from "../firebase.init";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
+  const [user, loading] = useAuthState(auth);
+  console.log(user);
+  const [admin] = useAdmin(user);
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="drawer w-full lg:w-3/4 mx-auto">
@@ -28,18 +38,24 @@ const Dashboard = () => {
             <div className="flex-1 px-2 mx-2">Dashboard</div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
+                {!admin && (
+                  <>
+                    <li>
+                      <Link to="/dashboard/myorders">My Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard/addreview">Add a Review</Link>
+                    </li>
+                  </>
+                )}
                 <li>
-                  <Link to="/dashboard">My Orders</Link>
+                  <Link to="/dashboard">My Profile</Link>
                 </li>
-                <li>
-                  <Link to="/dashboard/addreview">Add a Review</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/myprofile">My Profile</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/users">All Users</Link>
-                </li>
+                {admin && (
+                  <li>
+                    <Link to="/dashboard/users">All Users</Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>

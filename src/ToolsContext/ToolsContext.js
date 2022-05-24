@@ -21,7 +21,7 @@ export function ToolsProvider({ children }) {
   useEffect(() => {
     fetch("http://localhost:5000/users")
       .then((res) => res.json())
-      .then((data) => setUsers(users.concat(data)));
+      .then((data) => setUsers(data));
   }, []);
 
   return (
