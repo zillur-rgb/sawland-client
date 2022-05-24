@@ -11,10 +11,17 @@ const Users = () => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 403) {
+          toast("You are not allowed to make someone admin!");
+        }
+        return res.json();
+      })
       .then((data) => {
         console.log(data);
-        toast(`Succesfully made admin`);
+        if (data.modifiedCount > 0) {
+          toast(`Succesfully made admin`);
+        }
       });
   };
   console.log(users);
