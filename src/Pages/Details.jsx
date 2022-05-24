@@ -1,16 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ToolsContext from "../ToolsContext/ToolsContext";
 import ProductDetails from "../Components/Details/ProductDetails";
+import { useQuery } from "react-query";
 import NewProducts from "../Components/Products/NewProducts";
+import Loading from "../Components/Shared/Loading";
+import { toast } from "react-toastify";
 
 const Details = () => {
   const { id } = useParams();
-  const { tools } = useContext(ToolsContext);
-  const tool = tools.find((tool) => tool._id === id);
+  const {
+    isLoading,
+    refetch,
+    data: tool,
+  } = useQuery("singleTool", () =>
+    fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
+  );
+  if (isLoading) {
+    return <Loading />;
+  }
+  // const tool = tools.find((tool) => tool._id === id);
   return (
     <div className="w-full mx-auto">
-      <ProductDetails tool={tool} />
+      <ProductDetails tool={tool} refetch={refetch} />
       <NewProducts />
     </div>
   );

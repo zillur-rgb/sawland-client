@@ -2,7 +2,7 @@ import { useState } from "react";
 import hero from "../../Assets/hero.jpg";
 import OrderForm from "./OrderForm";
 
-const ProductDetails = ({ tool }) => {
+const ProductDetails = ({ tool, refetch }) => {
   return (
     <div className="mt-40 mb-100 w-3/4 mx-auto flex items-center justify-between">
       <div className="hero-content flex-col items-start w-2/5 ">
@@ -35,6 +35,7 @@ const ProductDetails = ({ tool }) => {
         price={tool?.price}
         _id={tool?._id}
         toolName={tool?.name}
+        refetch={refetch}
       />
     </div>
   );

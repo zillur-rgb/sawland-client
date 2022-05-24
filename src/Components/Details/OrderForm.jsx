@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
-const OrderForm = ({ stock, price, _id, sold, toolName }) => {
+const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
   const [quantity, setQuantity] = useState(0);
   const {
     register,
@@ -43,7 +43,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
 
     const updatedTool = {
       stock: stock - quantity,
-      sold: +(sold + quantity),
+      sold: +sold + quantity,
     };
     fetch(`http://localhost:5000/tools/${_id}`, {
       method: "PUT",
@@ -58,7 +58,8 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
         }
         return res.json();
       })
-      .then((data) => console.log(data));
+      .then((data) => refetch());
+
     reset();
   };
   return (
@@ -163,7 +164,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
             />
           </div>
         </div>
-        {quantity < 100 || quantity > stock ? (
+        {quantity < 20 || quantity > stock ? (
           <button
             disabled
             className="my-3 btn btn-primary font-text bg-main border-none hover:bg-hover w-full"
@@ -177,7 +178,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName }) => {
         )}
       </form>
       <p className="opacity-70 text-text font-text">
-        Minimum order quantity: 100
+        Minimum order quantity: 20
       </p>
     </div>
   );
