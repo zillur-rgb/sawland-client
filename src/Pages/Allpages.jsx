@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import AddATool from "../Components/Dashboard/AddATool";
 import AddReview from "../Components/Dashboard/AddReview";
 import ManageAllOrders from "../Components/Dashboard/ManageAllOrders";
 import MyOrders from "../Components/Dashboard/MyOrders";
@@ -34,6 +35,7 @@ const Allpages = () => {
         <Route index element={<MyProfile />} />
         <Route path="users" element={<Users />} />
         <Route path="manageallorders" element={<ManageAllOrders />}></Route>
+        <Route path="addaproduct" element={<AddATool />}></Route>
       </Route>
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/login" element={<Login />} />

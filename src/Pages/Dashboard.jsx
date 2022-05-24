@@ -60,6 +60,9 @@ const Dashboard = () => {
                         Manage All Orders
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/dashboard/addaproduct">Add a New Product</Link>
+                    </li>
                   </>
                 )}
               </ul>

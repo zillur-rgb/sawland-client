@@ -17,7 +17,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+      fetch(`http://localhost:5000/orders/${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
