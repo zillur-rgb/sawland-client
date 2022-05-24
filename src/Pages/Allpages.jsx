@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AddReview from "../Components/Dashboard/AddReview";
+import ManageAllOrders from "../Components/Dashboard/ManageAllOrders";
 import MyOrders from "../Components/Dashboard/MyOrders";
 import MyProfile from "../Components/Dashboard/MyProfile";
 import Users from "../Components/Dashboard/Users";
@@ -32,6 +33,7 @@ const Allpages = () => {
         <Route path="addreview" element={<AddReview />} />
         <Route index element={<MyProfile />} />
         <Route path="users" element={<Users />} />
+        <Route path="manageallorders" element={<ManageAllOrders />}></Route>
       </Route>
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/login" element={<Login />} />
