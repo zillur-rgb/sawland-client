@@ -1,15 +1,24 @@
 import React, { useContext } from "react";
 import ToolsContext from "../../ToolsContext/ToolsContext";
+import { useQuery } from "react-query";
+import Loading from "../Shared/Loading";
 
 const Reviews = () => {
-  const { reviews } = useContext(ToolsContext);
+  // const { reviews } = useContext(ToolsContext);
+  const { data: reviews, isLoading } = useQuery("reviews", () =>
+    fetch("http://localhost:5000/reviews").then((res) => res.json())
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="w-3/4 mx-auto my-100">
       <h1 className="text-main font-bold my-60 text-3xl text-center">
         What our clients say?
       </h1>
       <div className="grid grid-cols-2 gap-50 ">
-        {reviews.slice(-3, -1).map((review) => (
+        {reviews?.slice(-2).map((review) => (
           <div
             key={review._id}
             className=" border border-text border-opacity-20 card bg-base-100 shadow-xl"

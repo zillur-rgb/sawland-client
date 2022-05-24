@@ -11,20 +11,24 @@ const MyProfile = () => {
   const { register, handleSubmit } = useForm();
   const { isLoading, data } = useQuery("user", () =>
     fetch(`http://localhost:5000/users/${user?.email}`, {
+      method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }).then((res) => res.json())
   );
-  console.log(data);
+  const [name, setName] = useState(data?.name);
+  const [city, setCity] = useState(data?.city);
+  const [postcode, setPostcode] = useState(data?.postcode);
+  const [country, setCountry] = useState(data?.country);
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   if (loading || isLoading) {
     return <Loading />;
   }
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   return (
     <div className="w-3/5 mx-auto flex flex-col ">
       <div>
@@ -46,17 +50,17 @@ const MyProfile = () => {
               } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
               {...(update ? "disabled" : "")}
               type="text"
-              value={data?.name || " "}
+              value={name}
+              onChange={({ target }) => setName(target.value)}
               readOnly={update ? false : true}
               placeholder="name"
-              {...register("example")}
             />
           </div>
           <div className="flex flex-col">
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              value={data?.email || ""}
+              value={update ? "" : data?.email}
               className={`${
                 update ? "border" : "border-none"
               } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
