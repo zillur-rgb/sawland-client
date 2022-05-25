@@ -12,6 +12,7 @@ import Details from "./Details";
 import ForgetPassword from "./ForgetPassword";
 import Homepage from "./Homepage";
 import Login from "./Login";
+import NotFound from "./NotFound";
 import Reviews from "./Reviews";
 import SignUp from "./SignUp";
 import Tools from "./Tools";
@@ -50,6 +51,7 @@ const Allpages = () => {
         }
       />
       <Route path="/verifyemail" element={<VerifyEmail />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
