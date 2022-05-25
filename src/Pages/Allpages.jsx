@@ -7,6 +7,7 @@ import MyOrders from "../Components/Dashboard/MyOrders";
 import MyProfile from "../Components/Dashboard/MyProfile";
 import Users from "../Components/Dashboard/Users";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
+import Blogs from "./Blogs";
 import Dashboard from "./Dashboard";
 import Details from "./Details";
 import ForgetPassword from "./ForgetPassword";
@@ -51,6 +52,7 @@ const Allpages = () => {
         }
       />
       <Route path="/verifyemail" element={<VerifyEmail />} />
+      <Route path="/blogs" element={<Blogs />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
