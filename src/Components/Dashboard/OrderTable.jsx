@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import DeleteModal from "./DeleteModal";
+import Payment from "./Payment";
 
 const OrderTable = ({ order, handleDelete, setModal }) => {
   return (
@@ -21,7 +23,9 @@ const OrderTable = ({ order, handleDelete, setModal }) => {
           >
             cancel
           </label>
-          <button className="btn bg-main">Pay Now</button>
+          <Link to={`/payment/${order?._id}`} element={<Payment />}>
+            <button className="btn bg-main">Pay Now</button>
+          </Link>
         </td>
       </tr>
 

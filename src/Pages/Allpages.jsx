@@ -5,6 +5,7 @@ import AddReview from "../Components/Dashboard/AddReview";
 import ManageAllOrders from "../Components/Dashboard/ManageAllOrders";
 import MyOrders from "../Components/Dashboard/MyOrders";
 import MyProfile from "../Components/Dashboard/MyProfile";
+import Payment from "../Components/Dashboard/Payment";
 import Users from "../Components/Dashboard/Users";
 import RequireAuth from "../Components/RequireAuth/RequireAuth";
 import Blogs from "./Blogs";
@@ -41,6 +42,7 @@ const Allpages = () => {
         <Route path="addaproduct" element={<AddATool />}></Route>
       </Route>
       <Route path="/reviews" element={<Reviews />} />
+      <Route path="/payment/:paymentId" element={<Payment />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
