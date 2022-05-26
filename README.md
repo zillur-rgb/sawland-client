@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+## Table of contents
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Overview](#overview)
+  - [The challenge and How it works](#The-challenge-and-How-it-works)
+  - [Links](#links)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [Author](#author)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The task was to create a Fullstack Manufacturer website.
 
-### `npm start`
+### The challenges and tasks
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- The challenge was to build a complete website from scratch including design.
+- This was a really challenging task and there are a lot of feature I can add and I will work on this.
+- This project includes everything I learned till now.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### How it works
 
-### `npm test`
+- The task is to build a website for manufacturing company. I created both the user and admin area of the website and also the area where any user can visit.
+- User can browse whole website and order from the saws that are added in the website. A user must order at least minimum quantity otherwise he will not be able to place the order.
+- User has an area called dashboard where he can check all the products he ordered and if he wants he can cancel the order that he did not pay. But once he compltes the payment, he can not cancel.
+- An area in dashboard named, Add a review where a user can add his experience about Sawland.
+- Also he can check his profile and update where necessary.
+- He also can pay for the product using debit/ visa/ master card.
+  -Admin cannot place an order but he can add new saw or manage the tools.
+- He can see all the users that has been signed up. He can delete the user or make the user admin to provide authorization.
+- He also can see the products that are ordered. If a user makes the payment he can confirm this.
+- Update profile is also available for admin.
+- A normal user can browse the website without having an account but if he wants to place an order then he must sign up.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Links
 
-### `npm run build`
+- Server Side Links:
+- Server Side Github Link: [https://github.com/programming-hero-web-course1/manufacturer-website-server-side-zillur-rgb](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-zillur-rgb)
+- Client Side Github Link: [https://github.com/programming-hero-web-course1/manufacturer-website-client-side-zillur-rgb](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-zillur-rgb)
+- Live URL: [https://wheel-wave.web.app/](https://wheel-wave.web.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built with
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- ReactJS
+- NodeJs
+- ExpressJs
+- Mongoose
+- MongoDB Atlas
+- Firebase
+- Heroku
+- React Firebase Hooks
+- React Custom Hook
+- React Router
+- React Bootstrap
+- HTML 5
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### What I learned
 
-### `npm run eject`
+- It was really fun to hands on a project like a real project I used to do when I was in the design profession.
+- I have learned deploying server to Heroku, Working with Mongoose. Creating my own REST API.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Continued development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I will need to work with Json Web Token and also I will add some other functions for the user. Besides, I will try to make it more user friendly.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Useful resources
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Programming Hero Website
+- www.csstricks.com
+- www.console.firebase.google.com
+- www.stackoverflow.com
+-
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Dribbble - [Dribbble Link](https://dribbble.com/zillur-rgb)
+- Github- [Github Link](https://github.com/zillur-rgb)

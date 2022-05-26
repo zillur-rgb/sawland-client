@@ -14,7 +14,7 @@ const Payment = () => {
   const [order, setOrder] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${paymentId}`)
+    fetch(`https://fast-ridge-03538.herokuapp.com/orders/${paymentId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [paymentId]);

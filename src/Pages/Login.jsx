@@ -38,7 +38,7 @@ const Login = () => {
     errorMessage = "Error Signing Up";
   }
   const onSubmit = (data) => {
-    signInWithEmailAndPassword(data.email, data.password);
+    signInWithEmailAndPassword(data?.email, data?.password);
     reset();
   };
   return (
