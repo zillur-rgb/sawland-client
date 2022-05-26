@@ -27,7 +27,7 @@ const BlogModal = () => {
             desc: data.desc,
             img: img,
           };
-          fetch("https://peaceful-meadow-77367.herokuapp.com/blogs", {
+          fetch("https://fast-ridge-03538.herokuapp.com/blogs", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -6,7 +6,7 @@ const ManageAllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrders", () =>
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders`).then((res) =>
+    fetch(`https://fast-ridge-03538.herokuapp.com/orders`).then((res) =>
       res.json()
     )
   );

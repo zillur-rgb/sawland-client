@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
 
   const { isLoading, data, refetch } = useQuery("user", () =>
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/users/${user?.email}`, {
+    fetch(`https://fast-ridge-03538.herokuapp.com/users/${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -35,7 +35,7 @@ const MyProfile = () => {
       country: country,
     };
 
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/users/${user?.email}`, {
+    fetch(`https://fast-ridge-03538.herokuapp.com/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

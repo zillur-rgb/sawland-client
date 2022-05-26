@@ -12,7 +12,7 @@ const NewProducts = () => {
     isLoading,
     refetch,
   } = useQuery("allTools", () =>
-    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
+    fetch("https://fast-ridge-03538.herokuapp.com/tools").then((res) =>
       res.json()
     )
   );

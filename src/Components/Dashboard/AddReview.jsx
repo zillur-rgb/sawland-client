@@ -22,7 +22,7 @@ const AddReview = () => {
       rating: data?.rating,
     };
 
-    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews", {
+    fetch("https://fast-ridge-03538.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

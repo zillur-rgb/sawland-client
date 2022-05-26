@@ -6,7 +6,7 @@ import Loading from "../Shared/Loading";
 const Reviews = () => {
   // const { reviews } = useContext(ToolsContext);
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews").then((res) =>
+    fetch("https://fast-ridge-03538.herokuapp.com/reviews").then((res) =>
       res.json()
     )
   );
