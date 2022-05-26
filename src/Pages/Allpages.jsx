@@ -13,6 +13,7 @@ import Details from "./Details";
 import ForgetPassword from "./ForgetPassword";
 import Homepage from "./Homepage";
 import Login from "./Login";
+import MyPortfolio from "./MyPortfolio";
 import NotFound from "./NotFound";
 import Reviews from "./Reviews";
 import SignUp from "./SignUp";
@@ -53,6 +54,7 @@ const Allpages = () => {
       />
       <Route path="/verifyemail" element={<VerifyEmail />} />
       <Route path="/blogs" element={<Blogs />} />
+      <Route path="/about" element={<MyPortfolio />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
