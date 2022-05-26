@@ -1,9 +1,33 @@
 import React, { useContext } from "react";
+import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import ToolsContext from "../../ToolsContext/ToolsContext";
+import Loading from "../Shared/Loading";
 
 const Users = () => {
-  const { users } = useContext(ToolsContext);
+  // const { users } = useContext(ToolsContext);
+
+  const {
+    data: usersData,
+    isLoading,
+    refetch,
+  } = useQuery("usersData", () =>
+    fetch(`http://localhost:5000/users`).then((res) => res.json())
+  );
+
+  const deleteUser = (email) => {
+    if (window.confirm("Do you really want to delete this user?")) {
+      fetch(`http://localhost:5000/users/${email}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast("User is deleted");
+          refetch();
+        });
+    }
+  };
+
   const makeAdmin = (email) => {
     fetch(`http://localhost:5000/users/admin/${email}`, {
       method: "PUT",
@@ -24,7 +48,10 @@ const Users = () => {
         }
       });
   };
-  console.log(users);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra w-full">
@@ -38,13 +65,20 @@ const Users = () => {
           </tr>
         </thead>
         <tbody>
-          {users?.map((user, idx) => (
+          {usersData?.map((user, idx) => (
             <tr key={user?._id}>
               <th>{user?._id.slice(-5, -1)}</th>
               <td>{user?.name}</td>
               <td>{user?.email}</td>
               <td>
-                <button className="btn btn-xs bg-red-500">Delete User</button>
+                <button
+                  onClick={() => {
+                    deleteUser(user?.email);
+                  }}
+                  className="btn btn-xs bg-red-500"
+                >
+                  Delete User
+                </button>
               </td>
               <td>
                 {user?.role !== "admin" && (
