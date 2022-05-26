@@ -10,18 +10,18 @@ export function ToolsProvider({ children }) {
   // console.log(reviews);
   // console.log(tools);
   useEffect(() => {
-    fetch("http://localhost:5000/tools")
+    fetch("https://peaceful-meadow-77367.herokuapp.com/tools")
       .then((res) => res.json())
       .then((data) => setTools(...tools, data));
   }, []);
   // useEffect(() => {
-  //   fetch("http://localhost:5000/reviews")
+  //   fetch("https://peaceful-meadow-77367.herokuapp.com/reviews")
   //     .then((res) => res.json())
   //     .then((data) => setReviews(...reviews, data));
   // }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://peaceful-meadow-77367.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(...users, data));
   }, []);
@@ -31,7 +31,7 @@ export function ToolsProvider({ children }) {
   //   isLoading,
   //   refetch,
   // } = useQuery(() =>
-  //   fetch("http://localhost:5000/reviews").then((res) => res.json())
+  //   fetch("https://peaceful-meadow-77367.herokuapp.com/reviews").then((res) => res.json())
   // );
 
   // console.log(reviews);

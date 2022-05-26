@@ -1,19 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import ToolsContext from "../../ToolsContext/ToolsContext";
+import Loading from "../Shared/Loading";
 
 const BestSellingProducts = () => {
-  const { tools } = useContext(ToolsContext);
-  if (tools.length < 1) {
+  const {
+    data: tools,
+    isLoading,
+    refetch,
+  } = useQuery("allTools", () =>
+    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
+  );
+  if (tools?.length < 1) {
     return <p>Empty</p>;
   }
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="w-3/4 mx-auto">
       <h1 className="text-main font-bold my-60 text-3xl text-center">
         Best Selling Tools
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-50">
-        {tools?.slice(0, 3)?.map((tool) => (
+        {tools?.slice(3, 6)?.map((tool) => (
           <div
             key={tool.name}
             className="border border-text border-opacity-20 hover:border-opacity-100 cursor-pointer card card-compact w-full bg-base-100 shadow-xl"

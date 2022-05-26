@@ -15,7 +15,7 @@ const Payment = () => {
 
   console.log(order);
   useEffect(() => {
-    fetch(`http://localhost:5000/orders/${paymentId}`)
+    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders/${paymentId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [paymentId]);

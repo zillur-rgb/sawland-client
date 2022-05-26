@@ -8,7 +8,9 @@ const ManageAllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrders", () =>
-    fetch(`http://localhost:5000/orders`).then((res) => res.json())
+    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders`).then((res) =>
+      res.json()
+    )
   );
   console.log(orders);
   if (isLoading) {

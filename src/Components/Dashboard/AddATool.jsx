@@ -33,7 +33,7 @@ const AddATool = () => {
             sold: data?.sold,
           };
 
-          fetch("http://localhost:5000/tools", {
+          fetch("https://peaceful-meadow-77367.herokuapp.com/tools", {
             method: "POST",
             headers: {
               "content-type": "application/json",

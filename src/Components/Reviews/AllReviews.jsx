@@ -11,7 +11,9 @@ const AllReviews = () => {
     isLoading,
     refetch,
   } = useQuery("reviews", () =>
-    fetch("http://localhost:5000/reviews").then((res) => res.json())
+    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews").then((res) =>
+      res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;

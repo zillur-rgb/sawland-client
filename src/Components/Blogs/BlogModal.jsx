@@ -27,7 +27,7 @@ const BlogModal = () => {
             desc: data.desc,
             img: img,
           };
-          fetch("http://localhost:5000/blogs", {
+          fetch("https://peaceful-meadow-77367.herokuapp.com/blogs", {
             method: "POST",
             headers: {
               "content-type": "application/json",

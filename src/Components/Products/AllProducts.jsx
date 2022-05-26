@@ -1,12 +1,29 @@
 import React, { useContext } from "react";
+import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import ToolsContext from "../../ToolsContext/ToolsContext";
+import Loading from "../Shared/Loading";
 
 const AllProducts = () => {
-  const { tools } = useContext(ToolsContext);
+  // const { tools } = useContext(ToolsContext);
+
+  const {
+    data: tools,
+    isLoading,
+    refetch,
+  } = useQuery("allTools", () =>
+    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-40 my-65">
-      {tools.map((tool) => (
+      {tools?.map((tool) => (
         <div
           key={tool.name}
           className="border border-text border-opacity-20 hover:border-opacity-100 cursor-pointer card card-compact w-full bg-base-100 shadow-xl"

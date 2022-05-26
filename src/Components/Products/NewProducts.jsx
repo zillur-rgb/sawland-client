@@ -1,9 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import ToolsContext from "../../ToolsContext/ToolsContext";
+import Loading from "../Shared/Loading";
 
 const NewProducts = () => {
-  const { tools } = useContext(ToolsContext);
+  // const { tools } = useContext(ToolsContext);
+
+  const {
+    data: tools,
+    isLoading,
+    refetch,
+  } = useQuery("allTools", () =>
+    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="w-3/4 mx-auto my-30">
       <h1 className="text-main font-bold my-60 text-3xl text-center">

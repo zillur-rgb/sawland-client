@@ -43,7 +43,7 @@ const Navbar = () => {
               <Link to="/about">Portfolio</Link>
             </li>
             <li className="flex items-center">
-              Hello {user?.displayName}
+              {user ? `Hello ${user?.displayName}` : ""}
               {user ? (
                 <button
                   onClick={() => {

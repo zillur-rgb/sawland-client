@@ -65,15 +65,15 @@ const Projects = () => {
     },
   ];
   return (
-    <div className="w-3/4 mx-auto">
+    <div className="w-3/4 mx-auto my-50">
       <h1 className="text-main text-3xl font-semibold my-50 text-center">
         My Latest Fullstack Projects
       </h1>
-      <div className="grid grid-cols-3">
+      <div className="w-full mx-auto grid lg:grid-cols-3 gap-40 grid-cols-1">
         {projects.map((project) => (
           <div
             key={project.id}
-            className="card card-compact w-96 bg-base-100 shadow-xl"
+            className="card card-compact bg-base-100 shadow-xl"
           >
             <figure>
               <img src={`${project.image}?w=400&h=225`} alt="Shoes" />
@@ -94,12 +94,13 @@ const Projects = () => {
 
               <div className="card-actions justify-center my-10">
                 {project.technology.map((tech, idx) => (
-                  <div key={idx} className="badge badge-outline">
+                  <div
+                    key={idx}
+                    className="badge badge-outline border border-text border-opacity-30"
+                  >
                     {tech}
                   </div>
                 ))}
-
-                <div className="badge badge-outline">Products</div>
               </div>
             </div>
           </div>
