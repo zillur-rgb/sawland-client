@@ -4,12 +4,13 @@ import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
+import { toast } from "react-toastify";
 
 const MyProfile = () => {
   const [update, setUpdate] = useState(false);
   const [user, loading] = useAuthState(auth);
-  const { register, handleSubmit } = useForm();
-  const { isLoading, data } = useQuery("user", () =>
+
+  const { isLoading, data, refetch } = useQuery("user", () =>
     fetch(`http://localhost:5000/users/${user?.email}`, {
       method: "GET",
       headers: {
@@ -17,12 +18,35 @@ const MyProfile = () => {
       },
     }).then((res) => res.json())
   );
-  const [name, setName] = useState(data?.name);
-  const [city, setCity] = useState(data?.city);
-  const [postcode, setPostcode] = useState(data?.postcode);
-  const [country, setCountry] = useState(data?.country);
-  const onSubmit = (data) => {
-    console.log(data);
+  const [name, setName] = useState(data?.name || "");
+  const [city, setCity] = useState(data?.city || "");
+  const [postcode, setPostcode] = useState(data?.postcode || "");
+  const [country, setCountry] = useState(data?.country || "");
+
+  console.log(data);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const updatedData = {
+      email: user?.email,
+      name: name === "" ? data?.name : name,
+      city: city,
+      postcode: postcode,
+      country: country,
+    };
+
+    fetch(`http://localhost:5000/users/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    }).then((res) =>
+      res.json().then((update) => {
+        toast.success("Profile updated");
+        refetch();
+      })
+    );
   };
 
   if (loading || isLoading) {
@@ -40,19 +64,15 @@ const MyProfile = () => {
           Edit My Profile
         </button>
 
-        <form className="my-50" onSubmit={handleSubmit(onSubmit)}>
+        <form className="my-50" onSubmit={onSubmit}>
           <div className="flex flex-col">
             <label htmlFor="name">Name</label>
             <input
+              className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
-              className={`${
-                update ? "border" : "border-none"
-              } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
-              {...(update ? "disabled" : "")}
-              type="text"
+              disabled={update ? true : false}
               value={name}
               onChange={({ target }) => setName(target.value)}
-              readOnly={update ? false : true}
               placeholder="name"
             />
           </div>
@@ -60,14 +80,9 @@ const MyProfile = () => {
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              value={update ? "" : data?.email}
-              className={`${
-                update ? "border" : "border-none"
-              } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
-              type="email"
-              disabled={update ? false : true}
-              placeholder="email"
-              {...register("email")}
+              value={user?.email}
+              readOnly
+              className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-none"
             />
           </div>
 
@@ -75,43 +90,34 @@ const MyProfile = () => {
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <input
-                value={data?.city || ""}
+                value={city}
+                onChange={({ target }) => setCity(target.value)}
                 id="city"
-                disabled={update ? false : true}
-                className={`${
-                  update ? "border" : "border-none"
-                } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
-                type="text"
+                disabled={update ? true : false}
                 placeholder="city"
-                {...register("city")}
+                className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="postcode">Postcode</label>
               <input
                 id="postcode"
-                value={data?.postcode || ""}
-                disabled={update ? false : true}
-                className={`${
-                  update ? "border" : "border-none"
-                } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
-                type="text"
+                value={postcode}
+                disabled={update ? true : false}
+                onChange={({ target }) => setPostcode(target.value)}
                 placeholder="postcode"
-                {...register("postcode")}
+                className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
             </div>
             <div className="flex flex-col">
               <label htmlFor="country">Country </label>
               <input
-                value={data?.country || ""}
-                readOnly={update ? false : true}
                 id="country"
-                className={`${
-                  update ? "border" : "border-none"
-                } border-text border-opacity-30 rounded-md my-10 p-10 outline-none focus:border-opacity-100`}
-                type="text"
                 placeholder="country"
-                {...register("country")}
+                disabled={update ? true : false}
+                value={country}
+                onChange={({ target }) => setCountry(target.value)}
+                className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
             </div>
           </div>
@@ -123,6 +129,7 @@ const MyProfile = () => {
             />
           </div>
         </form>
+        {refetch}
       </div>
     </div>
   );
