@@ -5,12 +5,14 @@ import BestSellingProducts from "../Components/Products/BestSellingProducts";
 import NewProducts from "../Components/Products/NewProducts";
 import Statistics from "../Components/Shared/Statistics";
 import Reviews from "../Components/Reviews/Reviews";
+import About from "../Components/Homepage/About";
 
 const Homepage = () => {
   return (
     <div>
       <Hero />
       <Statistics />
+      <About />
       <Services />
       <BestSellingProducts />
       <NewProducts />
