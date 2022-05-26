@@ -13,16 +13,17 @@ const Payment = () => {
   const { paymentId } = useParams();
   const [order, setOrder] = useState({});
 
-  console.log(order);
   useEffect(() => {
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders/${paymentId}`)
+    fetch(`http://localhost:5000/orders/${paymentId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [paymentId]);
 
   return (
     <div>
-      <h1>Complete your payment form order {paymentId}</h1>
+      <h1 className="w-3/4 mx-auto text-2xl text-main font-medium">
+        Complete your payment form order for {paymentId}
+      </h1>
       <OrderCard paymentId={paymentId} order={order} />
       <Elements stripe={stripePromise}>
         <CheckoutForm order={order} />

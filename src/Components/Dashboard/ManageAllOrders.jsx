@@ -1,6 +1,4 @@
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 const ManageAllOrders = () => {
   const {

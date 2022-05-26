@@ -8,8 +8,9 @@ const CheckoutForm = ({ order }) => {
   const elements = useElements();
   const { total } = order;
   console.log(total);
+
   // useEffect(() => {
-  //   fetch("https://peaceful-meadow-77367.herokuapp.com/create-payment-intent", {
+  //   fetch("http://localhost:5000/create-payment-intent", {
   //     method: "POST",
   //     headers: {
   //       "content-type": "application/json",
@@ -44,7 +45,7 @@ const CheckoutForm = ({ order }) => {
     setCardError(error?.message || "");
   };
   return (
-    <div className="w-1/4 mx-auto">
+    <div className="card bg-base-100 shadow-xl py-50 px-20 w-1/4 mx-auto my-50">
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -62,7 +63,11 @@ const CheckoutForm = ({ order }) => {
             },
           }}
         />
-        <button type="submit" disabled={!clientSecret || !stripe}>
+        <button
+          className="btn bg-main border-none btn-xs my-20"
+          type="submit"
+          disabled={!stripe}
+        >
           Pay
         </button>
       </form>
