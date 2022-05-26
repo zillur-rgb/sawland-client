@@ -17,7 +17,7 @@ const Reviews = () => {
       <h1 className="text-main font-bold my-60 text-3xl text-center">
         What our clients say?
       </h1>
-      <div className="grid grid-cols-2 gap-50 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-50 ">
         {reviews?.slice(-2).map((review) => (
           <div
             key={review._id}

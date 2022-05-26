@@ -24,7 +24,7 @@ const Blogs = () => {
 
       <BlogModal />
 
-      <div className="grid grid-cols-3 gap-40 my-50">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-40 my-50">
         {blogs.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}

@@ -34,13 +34,16 @@ const Navbar = () => {
             <li>
               <Link to="/reviews">Reviews</Link>
             </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
+            {user && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
             <li>
               <Link to="/about">Portfolio</Link>
             </li>
-            <li>
+            <li className="flex items-center">
+              Hello {user?.displayName}
               {user ? (
                 <button
                   onClick={() => {
@@ -73,14 +76,16 @@ const Navbar = () => {
               <Link to="/tools">Tools</Link>
             </li>
             <li>
-              <Link to="/">Blogs</Link>
+              <Link to="/blogs">Blogs</Link>
             </li>
             <li>
               <Link to="/reviews">Reviews</Link>
             </li>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
+            {user && (
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+            )}
             <li>
               {user ? (
                 <button onClick={() => signOut(auth)} className="text-red-500">

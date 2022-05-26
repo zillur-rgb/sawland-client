@@ -7,7 +7,7 @@ import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 
 const MyProfile = () => {
-  const [update, setUpdate] = useState(false);
+  const [update, setUpdate] = useState(true);
   const [user, loading] = useAuthState(auth);
 
   const { isLoading, data, refetch } = useQuery("user", () =>
@@ -41,12 +41,12 @@ const MyProfile = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify(updatedData),
-    }).then((res) =>
-      res.json().then((update) => {
+    })
+      .then((res) => res.json())
+      .then((update) => {
         toast.success("Profile updated");
         refetch();
-      })
-    );
+      });
   };
 
   if (loading || isLoading) {
@@ -71,7 +71,7 @@ const MyProfile = () => {
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
               disabled={update ? true : false}
-              value={name}
+              value={data?.name}
               onChange={({ target }) => setName(target.value)}
               placeholder="name"
             />
@@ -90,7 +90,7 @@ const MyProfile = () => {
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <input
-                value={city}
+                value={data?.city}
                 onChange={({ target }) => setCity(target.value)}
                 id="city"
                 disabled={update ? true : false}
@@ -102,7 +102,7 @@ const MyProfile = () => {
               <label htmlFor="postcode">Postcode</label>
               <input
                 id="postcode"
-                value={postcode}
+                value={data?.postcode}
                 disabled={update ? true : false}
                 onChange={({ target }) => setPostcode(target.value)}
                 placeholder="postcode"
@@ -115,7 +115,7 @@ const MyProfile = () => {
                 id="country"
                 placeholder="country"
                 disabled={update ? true : false}
-                value={country}
+                value={data?.country}
                 onChange={({ target }) => setCountry(target.value)}
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />

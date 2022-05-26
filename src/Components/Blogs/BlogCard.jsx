@@ -6,7 +6,7 @@ const BlogCard = ({ blog }) => {
   return (
     <div
       onClick={() => setShowAll(!showAll)}
-      className="card w-96 cursor-pointer bg-base-100 shadow-xl"
+      className="card cursor-pointer bg-base-100 shadow-xl"
     >
       <figure className="tooltip" data-tip="hello">
         <img src={`${img}?w=400&h=225`} alt="Shoes" />

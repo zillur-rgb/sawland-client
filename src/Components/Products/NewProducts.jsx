@@ -10,7 +10,7 @@ const NewProducts = () => {
         Newly Added Tools
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-50">
-        {tools?.slice(-4, -1).map((tool) => (
+        {tools?.slice(-3).map((tool) => (
           <div
             key={tool.name}
             className="border border-text border-opacity-20 hover:border-opacity-100 cursor-pointer card card-compact w-full bg-base-100 shadow-xl"
