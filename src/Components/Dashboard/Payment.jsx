@@ -12,9 +12,10 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { paymentId } = useParams();
   const [order, setOrder] = useState({});
+  console.log(order);
 
   useEffect(() => {
-    fetch(`https://fast-ridge-03538.herokuapp.com/orders/${paymentId}`)
+    fetch(`http://localhost:5000/payment/${paymentId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [paymentId]);
@@ -26,7 +27,11 @@ const Payment = () => {
       </h1>
       <OrderCard paymentId={paymentId} order={order} />
       <Elements stripe={stripePromise}>
-        <CheckoutForm order={order} />
+        <CheckoutForm
+          price={order?.total}
+          name={order?.name}
+          email={order?.email}
+        />
       </Elements>
     </div>
   );

@@ -17,7 +17,7 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`https://fast-ridge-03538.herokuapp.com/orders/${user?.email}`, {
+      fetch(`http://localhost:5000/orders/${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -38,7 +38,7 @@ const MyOrders = () => {
   }
 
   const handleDelete = (id) => {
-    fetch(`https://fast-ridge-03538.herokuapp.com/orders/${id}`, {
+    fetch(`http://localhost:5000/orders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -33,7 +33,7 @@ const AddATool = () => {
             sold: data?.sold,
           };
 
-          fetch("https://fast-ridge-03538.herokuapp.com/tools", {
+          fetch("http://localhost:5000/tools", {
             method: "POST",
             headers: {
               "content-type": "application/json",

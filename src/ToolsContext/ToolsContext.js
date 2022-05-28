@@ -10,18 +10,18 @@ export function ToolsProvider({ children }) {
   // console.log(reviews);
   // console.log(tools);
   useEffect(() => {
-    fetch("https://fast-ridge-03538.herokuapp.com/tools")
+    fetch("http://localhost:5000/tools")
       .then((res) => res.json())
       .then((data) => setTools(...tools, data));
   }, []);
   // useEffect(() => {
-  //   fetch("https://fast-ridge-03538.herokuapp.com/reviews")
+  //   fetch("http://localhost:5000/reviews")
   //     .then((res) => res.json())
   //     .then((data) => setReviews(...reviews, data));
   // }, []);
 
   useEffect(() => {
-    fetch("https://fast-ridge-03538.herokuapp.com/users")
+    fetch("http://localhost:5000/users")
       .then((res) => res.json())
       .then((data) => setUsers(...users, data));
   }, []);
@@ -31,7 +31,7 @@ export function ToolsProvider({ children }) {
   //   isLoading,
   //   refetch,
   // } = useQuery(() =>
-  //   fetch("https://fast-ridge-03538.herokuapp.com/reviews").then((res) => res.json())
+  //   fetch("http://localhost:5000/reviews").then((res) => res.json())
   // );
 
   // console.log(reviews);

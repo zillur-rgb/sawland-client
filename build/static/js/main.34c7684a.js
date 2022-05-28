@@ -28738,7 +28738,7 @@
                               null === e || void 0 === e ? void 0 : e.stock,
                             sold: null === e || void 0 === e ? void 0 : e.sold,
                           };
-                        fetch("https://fast-ridge-03538.herokuapp.com/tools", {
+                        fetch("http://localhost:5000/tools", {
                           method: "POST",
                           headers: {
                             "content-type": "application/json",
@@ -29040,7 +29040,7 @@
                     review: null === e || void 0 === e ? void 0 : e.review,
                     rating: null === e || void 0 === e ? void 0 : e.rating,
                   };
-                  fetch("https://fast-ridge-03538.herokuapp.com/reviews", {
+                  fetch("http://localhost:5000/reviews", {
                     method: "POST",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(n),
@@ -29157,9 +29157,7 @@
         Wu = n(933),
         Qu = function () {
           var e = (0, Wu.useQuery)("allOrders", function () {
-              return fetch(
-                "https://fast-ridge-03538.herokuapp.com/orders"
-              ).then(function (e) {
+              return fetch("http://localhost:5000/orders").then(function (e) {
                 return e.json();
               });
             }),
@@ -29439,9 +29437,7 @@
           return (
             (0, e.useEffect)(
               function () {
-                fetch(
-                  "https://fast-ridge-03538.herokuapp.com/orders/".concat(t)
-                )
+                fetch("http://localhost:5000/orders/".concat(t))
                   .then(function (e) {
                     return e.json();
                   })
@@ -29546,7 +29542,7 @@
               function () {
                 o &&
                   fetch(
-                    "https://fast-ridge-03538.herokuapp.com/orders/".concat(
+                    "http://localhost:5000/orders/".concat(
                       null === o || void 0 === o ? void 0 : o.email
                     ),
                     {
@@ -29576,7 +29572,7 @@
           )
             return (0, Oo.jsx)(Po, {});
           var d = function (e) {
-            fetch("https://fast-ridge-03538.herokuapp.com/orders/".concat(e), {
+            fetch("http://localhost:5000/orders/".concat(e), {
               method: "DELETE",
             })
               .then(function (e) {
@@ -29633,7 +29629,7 @@
             s = a[1],
             u = (0, Wu.useQuery)("user", function () {
               return fetch(
-                "https://fast-ridge-03538.herokuapp.com/users/".concat(
+                "http://localhost:5000/users/".concat(
                   null === o || void 0 === o ? void 0 : o.email
                 ),
                 {
@@ -29716,7 +29712,7 @@
                           country: k,
                         };
                         fetch(
-                          "https://fast-ridge-03538.herokuapp.com/users/".concat(
+                          "http://localhost:5000/users/".concat(
                             null === o || void 0 === o ? void 0 : o.email
                           ),
                           {
@@ -29875,7 +29871,7 @@
           l = s[1];
         return (
           (0, e.useEffect)(function () {
-            fetch("https://fast-ridge-03538.herokuapp.com/tools")
+            fetch("http://localhost:5000/tools")
               .then(function (e) {
                 return e.json();
               })
@@ -29884,7 +29880,7 @@
               });
           }, []),
           (0, e.useEffect)(function () {
-            fetch("https://fast-ridge-03538.herokuapp.com/users")
+            fetch("http://localhost:5000/users")
               .then(function (e) {
                 return e.json();
               })
@@ -29900,11 +29896,9 @@
       }
       var dl = function () {
           var e = (0, Wu.useQuery)("usersData", function () {
-              return fetch("https://fast-ridge-03538.herokuapp.com/users").then(
-                function (e) {
-                  return e.json();
-                }
-              );
+              return fetch("http://localhost:5000/users").then(function (e) {
+                return e.json();
+              });
             }),
             t = e.data,
             n = e.isLoading,
@@ -29966,7 +29960,7 @@
                                               "Do you really want to delete this user?"
                                             ) &&
                                               fetch(
-                                                "https://fast-ridge-03538.herokuapp.com/users/".concat(
+                                                "http://localhost:5000/users/".concat(
                                                   t
                                                 ),
                                                 { method: "DELETE" }
@@ -29996,7 +29990,7 @@
                                                   ? void 0
                                                   : e.email),
                                               void fetch(
-                                                "https://fast-ridge-03538.herokuapp.com/users/admin/".concat(
+                                                "http://localhost:5000/users/admin/".concat(
                                                   t
                                                 ),
                                                 {
@@ -30137,19 +30131,16 @@
                               if (t.success) {
                                 var n = t.data.url,
                                   r = { title: e.title, desc: e.desc, img: n };
-                                fetch(
-                                  "https://fast-ridge-03538.herokuapp.com/blogs",
-                                  {
-                                    method: "POST",
-                                    headers: {
-                                      "content-type": "application/json",
-                                      authorization: "Bearer ".concat(
-                                        localStorage.getItem("accessToken")
-                                      ),
-                                    },
-                                    body: JSON.stringify(r),
-                                  }
-                                )
+                                fetch("http://localhost:5000/blogs", {
+                                  method: "POST",
+                                  headers: {
+                                    "content-type": "application/json",
+                                    authorization: "Bearer ".concat(
+                                      localStorage.getItem("accessToken")
+                                    ),
+                                  },
+                                  body: JSON.stringify(r),
+                                })
                                   .then(function (e) {
                                     return (
                                       (403 !== e.status && 401 !== e.status) ||
@@ -30249,7 +30240,7 @@
             r = t[1];
           return (
             (0, e.useEffect)(function () {
-              fetch("https://fast-ridge-03538.herokuapp.com/blogs")
+              fetch("http://localhost:5000/blogs")
                 .then(function (e) {
                   return e.json();
                 })
@@ -30292,20 +30283,15 @@
               function () {
                 var e = null === t || void 0 === t ? void 0 : t.email;
                 e &&
-                  fetch(
-                    "https://fast-ridge-03538.herokuapp.com/users/admin/".concat(
-                      e
-                    ),
-                    {
-                      method: "GET",
-                      headers: {
-                        "content-type": "application/json",
-                        authorization: "bearer ".concat(
-                          localStorage.getItem("accessToken")
-                        ),
-                      },
-                    }
-                  )
+                  fetch("http://localhost:5000/users/admin/".concat(e), {
+                    method: "GET",
+                    headers: {
+                      "content-type": "application/json",
+                      authorization: "bearer ".concat(
+                        localStorage.getItem("accessToken")
+                      ),
+                    },
+                  })
                     .then(function (e) {
                       return e.json();
                     })
@@ -30508,7 +30494,7 @@
                       total: r * s,
                       toolName: c,
                     };
-                  fetch("https://fast-ridge-03538.herokuapp.com/orders", {
+                  fetch("http://localhost:5000/orders", {
                     method: "POST",
                     headers: { "content-type": "application/json" },
                     body: JSON.stringify(a),
@@ -30520,14 +30506,11 @@
                       return Bu.success("Order is placed succesfully");
                     });
                   var i = { stock: o - r, sold: +l + r };
-                  fetch(
-                    "https://fast-ridge-03538.herokuapp.com/tools/".concat(u),
-                    {
-                      method: "PUT",
-                      headers: { "content-type": "application/json" },
-                      body: JSON.stringify(i),
-                    }
-                  )
+                  fetch("http://localhost:5000/tools/".concat(u), {
+                    method: "PUT",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify(i),
+                  })
                     .then(function (e) {
                       return (
                         (401 !== e.status && 403 !== e.status) || Ir(Io),
@@ -30848,11 +30831,9 @@
         },
         wl = function () {
           var e = (0, Wu.useQuery)("allTools", function () {
-              return fetch("https://fast-ridge-03538.herokuapp.com/tools").then(
-                function (e) {
-                  return e.json();
-                }
-              );
+              return fetch("http://localhost:5000/tools").then(function (e) {
+                return e.json();
+              });
             }),
             t = e.data,
             n = e.isLoading;
@@ -30883,11 +30864,11 @@
         kl = function () {
           var e = po().id,
             t = (0, Wu.useQuery)("singleTool", function () {
-              return fetch(
-                "https://fast-ridge-03538.herokuapp.com/tools/".concat(e)
-              ).then(function (e) {
-                return e.json();
-              });
+              return fetch("http://localhost:5000/tools/".concat(e)).then(
+                function (e) {
+                  return e.json();
+                }
+              );
             }),
             n = t.isLoading,
             r = t.refetch,
@@ -31093,11 +31074,9 @@
         Tl = function () {
           var e,
             t = (0, Wu.useQuery)("allTools", function () {
-              return fetch("https://fast-ridge-03538.herokuapp.com/tools").then(
-                function (e) {
-                  return e.json();
-                }
-              );
+              return fetch("http://localhost:5000/tools").then(function (e) {
+                return e.json();
+              });
             }),
             n = t.data,
             r = t.isLoading;
@@ -31191,9 +31170,7 @@
         },
         Ol = function () {
           var e = (0, Wu.useQuery)("reviews", function () {
-              return fetch(
-                "https://fast-ridge-03538.herokuapp.com/reviews"
-              ).then(function (e) {
+              return fetch("http://localhost:5000/reviews").then(function (e) {
                 return e.json();
               });
             }),
@@ -31343,14 +31320,11 @@
                 console.log(t);
                 var o = { email: r, name: i };
                 r &&
-                  fetch(
-                    "https://fast-ridge-03538.herokuapp.com/users/".concat(r),
-                    {
-                      method: "PUT",
-                      headers: { "content-type": "application/json" },
-                      body: JSON.stringify(o),
-                    }
-                  )
+                  fetch("http://localhost:5000/users/".concat(r), {
+                    method: "PUT",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify(o),
+                  })
                     .then(function (e) {
                       return e.json();
                     })
@@ -31947,9 +31921,7 @@
         },
         Ql = function () {
           var e = (0, Wu.useQuery)("reviews", function () {
-              return fetch(
-                "https://fast-ridge-03538.herokuapp.com/reviews"
-              ).then(function (e) {
+              return fetch("http://localhost:5000/reviews").then(function (e) {
                 return e.json();
               });
             }),
@@ -32186,11 +32158,9 @@
         },
         Gl = function () {
           var e = (0, Wu.useQuery)("allTools", function () {
-              return fetch("https://fast-ridge-03538.herokuapp.com/tools").then(
-                function (e) {
-                  return e.json();
-                }
-              );
+              return fetch("http://localhost:5000/tools").then(function (e) {
+                return e.json();
+              });
             }),
             t = e.data,
             n = e.isLoading;

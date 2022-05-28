@@ -11,9 +11,7 @@ const AllReviews = () => {
     isLoading,
     refetch,
   } = useQuery("reviews", () =>
-    fetch("https://fast-ridge-03538.herokuapp.com/reviews").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5000/reviews").then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

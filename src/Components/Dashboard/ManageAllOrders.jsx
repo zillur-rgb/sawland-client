@@ -6,9 +6,7 @@ const ManageAllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrders", () =>
-    fetch(`https://fast-ridge-03538.herokuapp.com/orders`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/orders`).then((res) => res.json())
   );
   console.log(orders);
   if (isLoading) {

@@ -22,7 +22,7 @@ const AddReview = () => {
       rating: data?.rating,
     };
 
-    fetch("https://fast-ridge-03538.herokuapp.com/reviews", {
+    fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

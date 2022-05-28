@@ -12,9 +12,7 @@ const NewProducts = () => {
     isLoading,
     refetch,
   } = useQuery("allTools", () =>
-    fetch("https://fast-ridge-03538.herokuapp.com/tools").then((res) =>
-      res.json()
-    )
+    fetch("http://localhost:5000/tools").then((res) => res.json())
   );
 
   if (isLoading) {

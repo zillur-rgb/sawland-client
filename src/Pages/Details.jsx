@@ -14,9 +14,7 @@ const Details = () => {
     refetch,
     data: tool,
   } = useQuery("singleTool", () =>
-    fetch(`https://fast-ridge-03538.herokuapp.com/tools/${id}`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

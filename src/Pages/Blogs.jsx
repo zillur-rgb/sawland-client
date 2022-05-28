@@ -7,7 +7,7 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("https://fast-ridge-03538.herokuapp.com/blogs")
+    fetch("http://localhost:5000/blogs")
       .then((res) => res.json())
       .then((result) => setBlogs(blogs.concat(result)));
   }, []);

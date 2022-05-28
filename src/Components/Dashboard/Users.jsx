@@ -12,14 +12,12 @@ const Users = () => {
     isLoading,
     refetch,
   } = useQuery("usersData", () =>
-    fetch(`https://fast-ridge-03538.herokuapp.com/users`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/users`).then((res) => res.json())
   );
 
   const deleteUser = (email) => {
     if (window.confirm("Do you really want to delete this user?")) {
-      fetch(`https://fast-ridge-03538.herokuapp.com/users/${email}`, {
+      fetch(`http://localhost:5000/users/${email}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -31,7 +29,7 @@ const Users = () => {
   };
 
   const makeAdmin = (email) => {
-    fetch(`https://fast-ridge-03538.herokuapp.com/users/admin/${email}`, {
+    fetch(`http://localhost:5000/users/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
