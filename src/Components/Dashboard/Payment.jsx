@@ -21,9 +21,10 @@ const Payment = () => {
   }, [paymentId]);
 
   return (
-    <div>
-      <h1 className="w-3/4 mx-auto text-2xl text-main font-medium">
-        Complete your payment form order for {paymentId}
+    <div className="my-100 py-50">
+      <h1 className="w-3/4 mx-auto text-2xl text-main font-medium text-center">
+        Complete your payment form order for{" "}
+        <span className="font-bold">{order?.toolName}</span>
       </h1>
       <OrderCard paymentId={paymentId} order={order} />
       <Elements stripe={stripePromise}>

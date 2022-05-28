@@ -39,9 +39,9 @@ const Navbar = () => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
             )}
-            <li>
+            {/* <li>
               <Link to="/about">Portfolio</Link>
-            </li>
+            </li> */}
             <li className="flex items-center">
               {user ? `Hello ${user?.displayName}` : ""}
               {user ? (

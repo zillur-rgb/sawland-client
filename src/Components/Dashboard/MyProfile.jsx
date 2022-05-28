@@ -18,8 +18,8 @@ const MyProfile = () => {
       },
     }).then((res) => res.json())
   );
-  const [name, setName] = useState(data?.name || "");
-  const [city, setCity] = useState(data?.city || "");
+  const [name, setName] = useState(data?.name);
+  const [city, setCity] = useState(data?.city);
   const [postcode, setPostcode] = useState(data?.postcode || "");
   const [country, setCountry] = useState(data?.country || "");
 
@@ -30,9 +30,9 @@ const MyProfile = () => {
     const updatedData = {
       email: user?.email,
       name: name === "" ? data?.name : name,
-      city: city,
-      postcode: postcode,
-      country: country,
+      city: city === "" ? data?.city : city,
+      postcode: postcode === "" ? data?.postcode : postcode,
+      country: country === "" ? data?.country : country,
     };
 
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -45,6 +45,7 @@ const MyProfile = () => {
       .then((res) => res.json())
       .then((update) => {
         toast.success("Profile updated");
+        setUpdate(false);
         refetch();
       });
   };
@@ -71,7 +72,7 @@ const MyProfile = () => {
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
               disabled={update ? true : false}
-              value={data?.name}
+              value={name}
               onChange={({ target }) => setName(target.value)}
               placeholder="name"
             />

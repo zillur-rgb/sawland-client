@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import hero from "../../Assets/hero.jpg";
 
 const Hero = () => {
   return (
-    <div className="hero min-h-screen bg-main bg-opacity-20">
+    <div className="hero h-auto md:h-[850px] bg-main bg-opacity-20">
       <div className="hero-content flex-col-reverse justify-between lg:flex-row-reverse">
         <img
           src={hero}
@@ -17,9 +18,11 @@ const Hero = () => {
             manufacture over whole world. 3 months money back guarantee of any
             product.
           </p>
-          <button className=" btn btn-primary font-text bg-main border-none hover:bg-hover">
-            Get Started
-          </button>
+          <Link to="/tools">
+            <button className=" btn btn-primary font-text bg-main border-none hover:bg-hover">
+              Get Started
+            </button>
+          </Link>
         </div>
       </div>
     </div>

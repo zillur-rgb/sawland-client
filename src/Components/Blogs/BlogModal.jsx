@@ -1,11 +1,15 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import Loading from "../Shared/Loading";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const BlogModal = () => {
+  const [user, loading] = useAuthState(auth);
   const { handleSubmit, register, reset } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
     const image = data.image[0];
@@ -50,16 +54,22 @@ const BlogModal = () => {
         }
       });
     reset();
+
+    if (loading) {
+      return <Loading />;
+    }
   };
   return (
     <>
       {/* // <!-- The button to open modal --> */}
-      <label
-        htmlFor="my-modal-5"
-        className="btn modal-button  bg-main border-none hover:bg-hover"
-      >
-        Add New Blog
-      </label>
+      {user && (
+        <label
+          htmlFor="my-modal-5"
+          className="btn modal-button  bg-main border-none hover:bg-hover"
+        >
+          Add New Blog
+        </label>
+      )}
 
       {/* <!-- Put this part before </body> tag --> */}
       <input type="checkbox" id="my-modal-5" className="modal-toggle" />

@@ -23,7 +23,7 @@ const Services = () => {
       <h1 className="text-main font-bold text-3xl text-center">
         Sawland is a brand you can trust!
       </h1>
-      <p className="text-text w-5/6 md:w-1/2 text-center mx-auto my-15">
+      <p className="text-text w-full lg:w-1/2 text-center mx-auto my-15">
         Range of services we are giving you when you want to use our branded
         saws for your shop. We know what you want and we are here to give yout
         these.

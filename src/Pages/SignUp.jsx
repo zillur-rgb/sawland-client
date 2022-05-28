@@ -8,6 +8,7 @@ import auth from "../firebase.init";
 import Loading from "../Components/Shared/Loading";
 import { useNavigate } from "react-router-dom";
 import useToken from "../hooks/useToken";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -34,10 +35,12 @@ const SignUp = () => {
     errorMessage = "Error Signing Up";
   }
   const onSubmit = async (data) => {
+    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({
       displayName: data.fullname,
     });
+    toast("You are succesfully signed up and redirected");
     reset();
   };
   return (

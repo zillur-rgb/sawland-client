@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import { Rating } from "react-simple-star-rating";
 
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);

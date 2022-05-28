@@ -9,8 +9,8 @@ const About = () => {
 
       <div className="flex flex-col lg:flex-row justify-between items-center my-100">
         <img className=" rounded-2xl" src={team} alt="teampic" />
-        <div className="w-5/6 md:w-2/5">
-          <h1 className="text-header text-2xl font-semibold">
+        <div className="w-full text-center lg:text-left lg:w-2/5">
+          <h1 className="text-header text-2xl my-50 lg:my-0 font-semibold">
             We want to tell you with whom you wdeal with!
           </h1>
           <p className="text-text">
