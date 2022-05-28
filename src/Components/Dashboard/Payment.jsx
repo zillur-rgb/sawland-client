@@ -31,6 +31,7 @@ const Payment = () => {
           price={order?.total}
           name={order?.name}
           email={order?.email}
+          id={order?._id}
         />
       </Elements>
     </div>

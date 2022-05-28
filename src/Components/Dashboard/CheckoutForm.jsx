@@ -1,12 +1,14 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ price, name, email }) => {
+const CheckoutForm = ({ price, name, email, id }) => {
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
   useEffect(() => {
     if (price) {
       fetch("http://localhost:5000/create-payment-intent", {
@@ -51,6 +53,7 @@ const CheckoutForm = ({ price, name, email }) => {
           billing_details: { name: name, email: email },
         },
       });
+    console.log(paymentIntent);
 
     if (error || intentError) {
       setCardError(error?.message || intentError?.message);
@@ -58,6 +61,25 @@ const CheckoutForm = ({ price, name, email }) => {
     } else {
       setSuccess("Congrats! Your payment is success");
       setCardError("");
+
+      // Store payment on database
+      const payment = {
+        id: id,
+        transactionId: paymentIntent.id,
+      };
+      fetch(`http://localhost:5000/orders/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setTimeout(() => {
+            navigate("/");
+          }, 5000);
+        });
     }
   };
   return (
