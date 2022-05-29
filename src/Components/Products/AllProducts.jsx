@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../hooks/useAdmin";
 import ToolsContext from "../../ToolsContext/ToolsContext";
 import Loading from "../Shared/Loading";
 
 const AllProducts = () => {
   // const { tools } = useContext(ToolsContext);
+  const [expand, setExpand] = useState(false);
+  const [user, loading] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
   const {
     data: tools,
@@ -30,8 +36,13 @@ const AllProducts = () => {
           <div className="card-body">
             <h2 className="card-title text-main text-2xl">{tool.name}</h2>
             <p className="text-text">
-              {tool.desc.slice(0, 130)}{" "}
-              <button className="text-main btn-link">Expand</button>
+              {expand ? tool.desc.slice(0, 130) : tool.desc}
+              <button
+                onClick={() => setExpand(!expand)}
+                className="text-main btn-link"
+              >
+                Expand
+              </button>
             </p>
             <p className="text-text">
               <span className="font-bold">Best for: </span>
@@ -42,11 +53,19 @@ const AllProducts = () => {
                 Price:{" "}
                 <span className="text-text font-bold">€{tool.price}</span>
               </p>
-              <Link to={`/tools/${tool._id}`}>
-                <button className="btn bg-main border-none hover:bg-hover">
-                  Purchase Now
-                </button>
-              </Link>
+              {!admin || !user ? (
+                <Link to={`/tools/purchase/${tool._id}`}>
+                  <button className="btn bg-main border-none hover:bg-hover">
+                    Purchase Now
+                  </button>
+                </Link>
+              ) : (
+                <Link to={`/tools/purchase/${tool._id}`}>
+                  <button className="btn bg-main border-none hover:bg-hover">
+                    Manage the Product
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

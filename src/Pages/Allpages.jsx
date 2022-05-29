@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AddATool from "../Components/Dashboard/AddATool";
 import AddReview from "../Components/Dashboard/AddReview";
 import ManageAllOrders from "../Components/Dashboard/ManageAllOrders";
+import ManageTool from "../Components/Dashboard/ManageTool";
 import MyOrders from "../Components/Dashboard/MyOrders";
 import MyProfile from "../Components/Dashboard/MyProfile";
 import Payment from "../Components/Dashboard/Payment";
@@ -40,6 +41,7 @@ const Allpages = () => {
         <Route path="users" element={<Users />} />
         <Route path="manageallorders" element={<ManageAllOrders />}></Route>
         <Route path="addaproduct" element={<AddATool />}></Route>
+        <Route path="managetool" element={<ManageTool />}></Route>
       </Route>
       <Route path="/reviews" element={<Reviews />} />
       <Route path="/payment/:paymentId" element={<Payment />} />
@@ -47,7 +49,7 @@ const Allpages = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/forgetpassword" element={<ForgetPassword />} />
       <Route
-        path="/tools/:id"
+        path="/tools/purchase/:id"
         element={
           <RequireAuth>
             <Details />
