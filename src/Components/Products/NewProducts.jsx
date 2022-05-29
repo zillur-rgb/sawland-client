@@ -12,7 +12,9 @@ const NewProducts = () => {
     isLoading,
     refetch,
   } = useQuery("allTools", () =>
-    fetch("http://localhost:5000/tools").then((res) => res.json())
+    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {

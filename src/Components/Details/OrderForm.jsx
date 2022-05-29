@@ -31,7 +31,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
       toolName,
     };
 
-    fetch("http://localhost:5000/orders", {
+    fetch("https://peaceful-meadow-77367.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
       stock: stock - quantity,
       sold: +sold + quantity,
     };
-    fetch(`http://localhost:5000/tools/${_id}`, {
+    fetch(`https://peaceful-meadow-77367.herokuapp.com/tools/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

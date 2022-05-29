@@ -14,7 +14,9 @@ const Details = () => {
     refetch,
     data: tool,
   } = useQuery("singleTool", () =>
-    fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
+    fetch(`https://peaceful-meadow-77367.herokuapp.com/tools/${id}`).then(
+      (res) => res.json()
+    )
   );
   if (isLoading) {
     return <Loading />;
