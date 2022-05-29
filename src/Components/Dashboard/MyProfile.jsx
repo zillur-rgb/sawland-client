@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
@@ -10,29 +10,36 @@ const MyProfile = () => {
   const [update, setUpdate] = useState(true);
   const [user, loading] = useAuthState(auth);
 
-  const { isLoading, data, refetch } = useQuery("user", () =>
-    fetch(`http://localhost:5000/users/${user?.email}`, {
+  useEffect(() => {
+    fetch("http://localhost:5000/users", {
       method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    }).then((res) => res.json())
-  );
-  const [name, setName] = useState(data?.name);
-  const [city, setCity] = useState(data?.city);
-  const [postcode, setPostcode] = useState(data?.postcode || "");
-  const [country, setCountry] = useState(data?.country || "");
+    })
+      .then((res) => res.json())
+      .then((data) => setuserData(data));
+  }, []);
 
-  console.log(data);
+  const { data, isLoading, refetch } = useQuery("usersdata", () => {
+    fetch("http://localhost:5000/users", {
+      method: "GET",
+    }).then((res) => res.json());
+  });
+  const [userData, setuserData] = useState([]);
+  const exact = userData.find((data) => data?.email === user?.email);
+  console.log(exact);
+  const [name, setName] = useState("");
+  const [city, setCity] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [country, setCountry] = useState("");
+  console.log(userData);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const updatedData = {
-      email: user?.email,
-      name: name === "" ? data?.name : name,
-      city: city === "" ? data?.city : city,
-      postcode: postcode === "" ? data?.postcode : postcode,
-      country: country === "" ? data?.country : country,
+      email: exact?.email,
+      name: name,
+      city: city,
+      postcode: postcode,
+      country: country,
     };
 
     fetch(`http://localhost:5000/users/${user?.email}`, {
@@ -46,11 +53,10 @@ const MyProfile = () => {
       .then((update) => {
         toast.success("Profile updated");
         setUpdate(false);
-        refetch();
       });
   };
 
-  if (loading || isLoading) {
+  if (loading) {
     return <Loading />;
   }
 
@@ -72,7 +78,7 @@ const MyProfile = () => {
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
               disabled={update ? true : false}
-              value={name}
+              value={update ? exact?.name : name}
               onChange={({ target }) => setName(target.value)}
               placeholder="name"
             />
@@ -81,7 +87,7 @@ const MyProfile = () => {
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              value={user?.email}
+              value={exact?.email}
               readOnly
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-none"
             />
@@ -91,7 +97,7 @@ const MyProfile = () => {
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <input
-                value={data?.city}
+                value={update ? exact?.city : city}
                 onChange={({ target }) => setCity(target.value)}
                 id="city"
                 disabled={update ? true : false}
@@ -103,7 +109,7 @@ const MyProfile = () => {
               <label htmlFor="postcode">Postcode</label>
               <input
                 id="postcode"
-                value={data?.postcode}
+                value={update ? exact?.postcode : postcode}
                 disabled={update ? true : false}
                 onChange={({ target }) => setPostcode(target.value)}
                 placeholder="postcode"
@@ -116,7 +122,7 @@ const MyProfile = () => {
                 id="country"
                 placeholder="country"
                 disabled={update ? true : false}
-                value={data?.country}
+                value={update ? exact?.country : country}
                 onChange={({ target }) => setCountry(target.value)}
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
@@ -130,7 +136,6 @@ const MyProfile = () => {
             />
           </div>
         </form>
-        {refetch}
       </div>
     </div>
   );

@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
-import { Rating } from "react-simple-star-rating";
+import reactStars from "react-stars";
+import ReactStars from "react-stars";
 
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);
   const { register, handleSubmit, reset } = useForm();
+  const [rating, setRating] = useState(0);
 
   if (loading) {
     return <Loading />;
   }
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -20,7 +26,7 @@ const AddReview = () => {
       name: user?.displayName,
       city: data?.city,
       review: data?.review,
-      rating: data?.rating,
+      rating: rating,
     };
 
     fetch("http://localhost:5000/reviews", {
@@ -32,6 +38,7 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((data) => toast("Your review has been posted"));
+    console.log(newReview);
     reset();
   };
   return (
@@ -70,16 +77,22 @@ const AddReview = () => {
             {...register("city", { required: true })}
           />
         </div>
-        <div className="flex flex-col">
-          <label htmlFor="rating">Rating</label>
+        {/* <label htmlFor="rating">Rating</label>
           <input
             id="rating"
             className="border border-text border-opacity-30 rounded-md p-10 outline-none focus:border-opacity-100"
             type="number"
             placeholder="5"
             {...register("rating", { required: true })}
-          />
-        </div>
+          /> */}
+
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          color2={"#ffd700"}
+        />
+
         <div className="flex flex-col">
           <label htmlFor="city">Review</label>
           <textarea

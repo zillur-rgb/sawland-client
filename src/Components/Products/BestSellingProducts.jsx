@@ -29,7 +29,7 @@ const BestSellingProducts = () => {
         {tools?.slice(3, 6)?.map((tool) => (
           <div
             key={tool.name}
-            className="border border-text border-opacity-20 hover:border-opacity-100 cursor-pointer card card-compact w-full bg-base-100 shadow-xl"
+            className="border border-text border-opacity-20 hover:border-opacity-100 cursor-pointer card card-compact w-full bg-base-100 shadow-md"
           >
             <img className=" rounded-lg" src={tool.image} alt="Shoes" />
             <div className="card-body">

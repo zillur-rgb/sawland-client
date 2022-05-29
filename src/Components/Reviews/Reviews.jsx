@@ -21,7 +21,7 @@ const Reviews = () => {
         {reviews?.slice(-2).map((review) => (
           <div
             key={review._id}
-            className=" border border-text border-opacity-20 card bg-base-100 shadow-xl"
+            className=" border border-text border-opacity-20 card bg-base-100 shadow-md"
           >
             <div className="card-body">
               <h2 className="card-title text-main">{review.name}</h2>
