@@ -34,7 +34,9 @@ const Dashboard = () => {
                 </svg>
               </label>
             </div>
-            <div className="flex-1 px-2 mx-2">Dashboard</div>
+            <div className="flex-1 px-2 mx-2">
+              {admin ? "Admin " : "User "}Dashboard
+            </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal">
                 {!admin && (

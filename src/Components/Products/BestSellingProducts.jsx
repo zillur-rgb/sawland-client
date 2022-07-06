@@ -49,7 +49,7 @@ const BestSellingProducts = () => {
                   Price:{" "}
                   <span className="text-text font-bold">€{tool.price}</span>
                 </p>
-                <Link to={`/tools/${tool._id}`}>
+                <Link to={`/tools/purchase/${tool._id}`}>
                   <button className="btn bg-main border-none hover:bg-hover">
                     Purchase Now
                   </button>
