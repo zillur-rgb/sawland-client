@@ -1,15 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import ToolsContext from "../../ToolsContext/ToolsContext";
 import Loading from "../Shared/Loading";
 
 const BestSellingProducts = () => {
-  const {
-    data: tools,
-    isLoading,
-    refetch,
-  } = useQuery("allTools", () =>
+  const { data: tools, isLoading } = useQuery("allTools", () =>
     fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
       res.json()
     )
