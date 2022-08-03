@@ -38,7 +38,7 @@ The task was to create a Fullstack Manufacturer website.
 - Server Side Links:
 - Server Side Github Link: [https://github.com/programming-hero-web-course1/manufacturer-website-server-side-zillur-rgb](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-zillur-rgb)
 - Client Side Github Link: [https://github.com/programming-hero-web-course1/manufacturer-website-client-side-zillur-rgb](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-zillur-rgb)
-- Live URL: [https://wheel-wave.web.app/](https://wheel-wave.web.app/)
+- Live URL: [https://sawland-e5251.web.app/](https://sawland-e5251.web.app/)
 
 ### Built with
 
@@ -50,6 +50,7 @@ The task was to create a Fullstack Manufacturer website.
 - Firebase
 - Heroku
 - React Firebase Hooks
+- React Query
 - React Custom Hook
 - React Router
 - React Bootstrap
