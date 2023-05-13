@@ -31,7 +31,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
       toolName,
     };
 
-    fetch("https://peaceful-meadow-77367.herokuapp.com/orders", {
+    fetch("https://sawland.onrender.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
       stock: stock - quantity,
       sold: +sold + quantity,
     };
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/tools/${_id}`, {
+    fetch(`https://sawland.onrender.com/tools/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
     reset();
   };
   return (
-    <div className="w-2/5">
+    <div className="w-full lg:w-2/5 px-5 lg:px-0">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="name">
           <label className="label">

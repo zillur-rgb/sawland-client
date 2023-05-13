@@ -4,8 +4,8 @@ import OrderForm from "./OrderForm";
 
 const ProductDetails = ({ tool, refetch }) => {
   return (
-    <div className="mt-40 mb-100 w-3/4 mx-auto flex items-center justify-between">
-      <div className="hero-content flex-col items-start w-2/5 ">
+    <div className="mt-40 mb-100 w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row items-center justify-between">
+      <div className="hero-content flex-col items-start w-full lg:w-2/5 ">
         <h1 className="text-2xl font-header sm:text-3xl my-20 font-bold leading-15 text-header">
           You are purchsing <span className="text-main">{tool?.name}</span>
         </h1>

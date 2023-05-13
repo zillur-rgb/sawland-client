@@ -11,18 +11,15 @@ const CheckoutForm = ({ price, name, email, id }) => {
   const navigate = useNavigate();
   useEffect(() => {
     if (price) {
-      fetch(
-        "https://peaceful-meadow-77367.herokuapp.com/create-payment-intent",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            price,
-          }),
-        }
-      )
+      fetch("https://sawland.onrender.com/create-payment-intent", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          price,
+        }),
+      })
         .then((res) => res.json())
         .then((data) => {
           if (data?.clientSecret) {
@@ -70,7 +67,7 @@ const CheckoutForm = ({ price, name, email, id }) => {
         id: id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://peaceful-meadow-77367.herokuapp.com/orders/${id}`, {
+      fetch(`https://sawland.onrender.com/orders/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/users", {
+    fetch("https://sawland.onrender.com/users", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -19,7 +19,7 @@ const MyProfile = () => {
   }, []);
 
   const { data, isLoading, refetch } = useQuery("usersdata", () => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/users", {
+    fetch("https://sawland.onrender.com/users", {
       method: "GET",
     }).then((res) => res.json());
   });
@@ -42,7 +42,7 @@ const MyProfile = () => {
       country: country,
     };
 
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/users/${user?.email}`, {
+    fetch(`https://sawland.onrender.com/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

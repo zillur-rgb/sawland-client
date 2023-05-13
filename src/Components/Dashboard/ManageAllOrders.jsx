@@ -6,9 +6,7 @@ const ManageAllOrders = () => {
     isLoading,
     refetch,
   } = useQuery("allOrders", () =>
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders`).then((res) =>
-      res.json()
-    )
+    fetch(`https://sawland.onrender.com/orders`).then((res) => res.json())
   );
   console.log(orders);
   if (isLoading) {

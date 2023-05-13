@@ -4,7 +4,7 @@ import hero from "../../Assets/hero.jpg";
 const Hero = () => {
   return (
     <div className="hero h-auto md:h-[850px] bg-main bg-opacity-20">
-      <div className="hero-content flex-col-reverse justify-between lg:flex-row-reverse">
+      <div className="hero-content w-3/4 flex-col-reverse justify-between lg:flex-row-reverse">
         <img
           src={hero}
           className="hidden sm:block max-w-sm rounded-lg shadow-2xl"

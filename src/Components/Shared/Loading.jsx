@@ -4,11 +4,16 @@ const Loading = () => {
   return (
     <div
       id="loading-screen"
-      className="w-full h-full fixed block top-0 left-0 bg-white opacity-75 z-50"
+      className="w-full h-screen fixed block top-0 left-0 bg-white opacity-75 z-50 flex justify-center items-center"
     >
-      <span className="text-green-500 opacity-75 top-1/2 my-0 mx-auto block relative w-0 h-0">
-        <i className="fas fa-circle-notch fa-spin fa-5x"></i>
-      </span>
+      <div
+        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status"
+      >
+        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+          Loading...
+        </span>
+      </div>
     </div>
   );
 };

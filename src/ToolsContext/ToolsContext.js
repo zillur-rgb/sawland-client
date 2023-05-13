@@ -9,19 +9,19 @@ export function ToolsProvider({ children }) {
   const [users, setUsers] = useState([]);
   // console.log(reviews);
   // console.log(tools);
-  useEffect(() => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/tools")
-      .then((res) => res.json())
-      .then((data) => setTools(...tools, data));
-  }, []);
   // useEffect(() => {
-  //   fetch("https://peaceful-meadow-77367.herokuapp.com/reviews")
+  //   fetch("https://sawland.onrender.com/tools")
+  //     .then((res) => res.json())
+  //     .then((data) => setTools(...tools, data));
+  // }, []);
+  // useEffect(() => {
+  //   fetch("https://sawland.onrender.com/reviews")
   //     .then((res) => res.json())
   //     .then((data) => setReviews(...reviews, data));
   // }, []);
 
   useEffect(() => {
-    fetch("https://peaceful-meadow-77367.herokuapp.com/users")
+    fetch("https://sawland.onrender.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(...users, data));
   }, []);
@@ -31,7 +31,7 @@ export function ToolsProvider({ children }) {
   //   isLoading,
   //   refetch,
   // } = useQuery(() =>
-  //   fetch("https://peaceful-meadow-77367.herokuapp.com/reviews").then((res) => res.json())
+  //   fetch("https://sawland.onrender.com/reviews").then((res) => res.json())
   // );
 
   // console.log(reviews);

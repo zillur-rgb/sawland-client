@@ -29,7 +29,7 @@ const AddReview = () => {
       rating: rating,
     };
 
-    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews", {
+    fetch("https://sawland.onrender.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -6,9 +6,7 @@ const NewProducts = () => {
   // const { tools } = useContext(ToolsContext);
 
   const { data: tools, isLoading } = useQuery("allTools", () =>
-    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
-      res.json()
-    )
+    fetch("https://sawland.onrender.com/tools").then((res) => res.json())
   );
 
   if (isLoading) {

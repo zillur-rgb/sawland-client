@@ -4,9 +4,7 @@ import Loading from "../Shared/Loading";
 
 const BestSellingProducts = () => {
   const { data: tools, isLoading } = useQuery("allTools", () =>
-    fetch("https://peaceful-meadow-77367.herokuapp.com/tools").then((res) =>
-      res.json()
-    )
+    fetch("https://sawland.onrender.com/tools").then((res) => res.json())
   );
   if (tools?.length < 1) {
     return <p>Empty</p>;

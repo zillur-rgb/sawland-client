@@ -31,7 +31,7 @@ const BlogModal = () => {
             desc: data.desc,
             img: img,
           };
-          fetch("https://peaceful-meadow-77367.herokuapp.com/blogs", {
+          fetch("https://sawland.onrender.com/blogs", {
             method: "POST",
             headers: {
               "content-type": "application/json",

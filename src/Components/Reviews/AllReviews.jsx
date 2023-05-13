@@ -11,9 +11,7 @@ const AllReviews = () => {
     isLoading,
     refetch,
   } = useQuery("reviews", () =>
-    fetch("https://peaceful-meadow-77367.herokuapp.com/reviews").then((res) =>
-      res.json()
-    )
+    fetch("https://sawland.onrender.com/reviews").then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

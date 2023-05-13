@@ -15,7 +15,7 @@ const Payment = () => {
   console.log(order);
 
   useEffect(() => {
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/payment/${paymentId}`)
+    fetch(`https://sawland.onrender.com/payment/${paymentId}`)
       .then((res) => res.json())
       .then((data) => setOrder(data));
   }, [paymentId]);

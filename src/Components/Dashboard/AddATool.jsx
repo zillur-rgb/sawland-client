@@ -33,7 +33,7 @@ const AddATool = () => {
             sold: data?.sold,
           };
 
-          fetch("https://peaceful-meadow-77367.herokuapp.com/tools", {
+          fetch("https://sawland.onrender.com/tools", {
             method: "POST",
             headers: {
               "content-type": "application/json",

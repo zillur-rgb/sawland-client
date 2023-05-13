@@ -17,14 +17,11 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://peaceful-meadow-77367.herokuapp.com/orders/${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`https://sawland.onrender.com/orders/${user?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth);
@@ -41,7 +38,7 @@ const MyOrders = () => {
   }
 
   const handleDelete = (id) => {
-    fetch(`https://peaceful-meadow-77367.herokuapp.com/orders/${id}`, {
+    fetch(`https://sawland.onrender.com/orders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

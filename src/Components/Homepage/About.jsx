@@ -1,15 +1,15 @@
 import team from "../../Assets/team.jpg";
 const About = () => {
   return (
-    <div className="w-5/6 md:w-3/5 mx-auto">
+    <div className="w-full md:w-3/4 mx-auto">
       <h1 className="text-main font-bold text-3xl text-center my-30">
         We are a young passionate team <br /> who wants to impact on saw
         industry.
       </h1>
 
-      <div className="flex flex-col lg:flex-row justify-between items-center my-100">
-        <img className=" rounded-2xl" src={team} alt="teampic" />
-        <div className="w-full text-center lg:text-left lg:w-2/5">
+      <div className="w-full flex flex-col lg:flex-row justify-between items-center my-100">
+        <img className="lg:w-2/5 rounded-2xl" src={team} alt="teampic" />
+        <div className="w-full text-center lg:text-left lg:w-1/2">
           <h1 className="text-header text-2xl my-50 lg:my-0 font-semibold">
             We want to tell you with whom you wdeal with!
           </h1>
