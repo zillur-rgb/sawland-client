@@ -30,9 +30,9 @@ const Login = () => {
   if (token) {
     navigate(from, { replace: true });
   }
-  if (loading || gLoading) {
-    return <Loading />;
-  }
+  // if (loading || gLoading) {
+  //   return <Loading />;
+  // }
   let errorMessage = "";
   if (error || gError) {
     errorMessage = "Error Signing Up";

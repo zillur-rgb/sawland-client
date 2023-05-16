@@ -10,9 +10,9 @@ const BestSellingProducts = () => {
     return <p>Empty</p>;
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   return (
     <div className="w-3/4 mx-auto">

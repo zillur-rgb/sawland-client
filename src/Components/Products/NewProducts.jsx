@@ -9,9 +9,9 @@ const NewProducts = () => {
     fetch("https://sawland.onrender.com/tools").then((res) => res.json())
   );
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
   return (
     <div className="w-3/4 mx-auto my-30">
       <h1 className="text-main font-bold my-60 text-3xl text-center">
