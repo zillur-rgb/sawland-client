@@ -7,6 +7,15 @@ import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 
 const MyProfile = () => {
+  //  From react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    onChange,
+    formState: { errors },
+  } = useForm();
+
   const [update, setUpdate] = useState(true);
   const [user] = useAuthState(auth);
 
@@ -17,23 +26,25 @@ const MyProfile = () => {
         (res) => res.json()
       )
   );
-  const [name, setName] = useState(userData?.name ? userData?.name : "");
-  const [city, setCity] = useState(userData?.city ? userData?.city : "");
-  const [postcode, setPostcode] = useState(
-    userData?.postcode ? userData?.postcode : ""
-  );
-  const [country, setCountry] = useState(
-    userData?.country ? userData?.country : ""
-  );
+  // const [name, setName] = useState(userData?.name ? userData?.name : "");
+  // const [city, setCity] = useState("");
+  // const [postcode, setPostcode] = useState(
+  //   userData?.postcode ? userData?.postcode : ""
+  // );
+  // const [country, setCountry] = useState(
+  //   userData?.country ? userData?.country : ""
+  // );
 
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
+    // e.preventDefault();
+    const { name, email, city, postcode, country } = data;
+
     const updatedData = {
-      email: userData.email,
-      name: name || userData?.name,
-      city: city || userData?.city,
-      postcode: postcode || userData?.postcode,
-      country: country || userData?.country,
+      name,
+      email,
+      city,
+      postcode,
+      country,
     };
 
     fetch(`https://sawland.onrender.com/users/${user?.email}`, {
@@ -65,15 +76,15 @@ const MyProfile = () => {
           Edit My Profile
         </button>
 
-        <form className="my-50" onSubmit={onSubmit}>
+        <form className="my-50" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col">
             <label htmlFor="name">Name</label>
             <input
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
-              disabled={update ? true : false}
-              value={name}
-              onChange={({ target }) => setName(target.value)}
+              type="text"
+              defaultValue={userData?.name || " "}
+              {...register("name")}
               placeholder="name"
             />
           </div>
@@ -84,6 +95,8 @@ const MyProfile = () => {
               value={userData?.email || " "}
               readOnly
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-none"
+              type="text"
+              {...register("email")}
             />
           </div>
 
@@ -91,10 +104,11 @@ const MyProfile = () => {
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <input
-                value={city}
-                onChange={({ target }) => setCity(target.value)}
+                defaultValue={userData?.city || " "}
+                {...register("city")}
+                onChange={onChange}
+                type="text"
                 id="city"
-                disabled={update}
                 placeholder="city"
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
@@ -103,9 +117,9 @@ const MyProfile = () => {
               <label htmlFor="postcode">Postcode</label>
               <input
                 id="postcode"
-                value={postcode}
-                disabled={update ? true : false}
-                onChange={({ target }) => setPostcode(target.value)}
+                defaultValue={userData?.postcode || " "}
+                {...register("postcode")}
+                type="text"
                 placeholder="postcode"
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
@@ -115,9 +129,9 @@ const MyProfile = () => {
               <input
                 id="country"
                 placeholder="country"
-                disabled={update ? true : false}
-                value={country}
-                onChange={({ target }) => setCountry(target.value)}
+                defaultValue={userData?.country || " "}
+                {...register("country")}
+                type="text"
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
             </div>

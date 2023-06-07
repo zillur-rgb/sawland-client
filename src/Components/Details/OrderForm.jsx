@@ -5,8 +5,8 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
+import { useQuery } from "react-query";
 const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
-  const [quantity, setQuantity] = useState(0);
   const {
     register,
     handleSubmit,
@@ -14,7 +14,16 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
     onChange,
     formState: { errors },
   } = useForm();
+  const [quantity, setQuantity] = useState(0);
   const [user, loading] = useAuthState(auth);
+
+  const { data: userData } = useQuery(
+    "orderUser",
+    async () =>
+      await fetch(`https://sawland.onrender.com/users/${user?.email}`).then(
+        (res) => res.json()
+      )
+  );
   if (loading) {
     return <Loading />;
   }
@@ -71,9 +80,8 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
           </label>
           <input
             type="text"
-            value={user?.displayName || " "}
+            value={userData?.name || " "}
             {...register("name")}
-            readOnly
             className="input input-bordered w-full"
           />
         </div>
@@ -140,6 +148,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
             <input
               type="text"
               className="input input-bordered w-full"
+              value={userData?.city || " "}
               {...register("city")}
             />
           </div>
@@ -150,6 +159,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
             <input
               type="number"
               className="input input-bordered w-full"
+              value={userData?.postcode || " "}
               {...register("postcode")}
             />
           </div>
@@ -160,6 +170,7 @@ const OrderForm = ({ stock, price, _id, sold, toolName, refetch }) => {
             <input
               type="text"
               className="input input-bordered w-full"
+              value={userData?.country || " "}
               {...register("country")}
             />
           </div>
