@@ -7,10 +7,10 @@ const About = () => {
         industry.
       </h1>
 
-      <div className="w-full flex flex-col lg:flex-row justify-between items-center my-100">
-        <img className="lg:w-2/5 rounded-2xl" src={team} alt="teampic" />
+      <div className="w-full space-x-16 flex flex-col lg:flex-row justify-between items-center my-100">
+        <img className="lg:w-1/2 rounded-2xl" src={team} alt="teampic" />
         <div className="w-full text-center lg:text-left lg:w-1/2">
-          <h1 className="text-header text-2xl my-50 lg:my-0 font-semibold">
+          <h1 className="text-header text-2xl my-50 lg:mb-8 font-semibold">
             We want to tell you with whom you wdeal with!
           </h1>
           <p className="text-text">

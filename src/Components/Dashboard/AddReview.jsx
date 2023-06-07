@@ -42,7 +42,7 @@ const AddReview = () => {
     reset();
   };
   return (
-    <div className="w-3/5 mx-auto my-20 flex flex-col justify-center items-center">
+    <div className="w-2/3 mx-auto my-20 flex flex-col justify-center items-center">
       <h1 className="text-3xl text-main  font-semibold my-10">
         Provide Your Valuable Feedback
       </h1>
@@ -55,7 +55,7 @@ const AddReview = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-full mx-auto flex flex-col justify-center items-center my-10"
       >
-        <div className="flex flex-col">
+        <div className="flex flex-col w-3/5">
           <label htmlFor="name">Name</label>
           <input
             id="name"
@@ -67,7 +67,7 @@ const AddReview = () => {
           />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col w-3/5">
           <label htmlFor="city">City</label>
           <input
             id="city"
@@ -86,14 +86,7 @@ const AddReview = () => {
             {...register("rating", { required: true })}
           /> */}
 
-        <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={24}
-          color2={"#ffd700"}
-        />
-
-        <div className="flex flex-col">
+        <div className="flex flex-col w-3/5">
           <label htmlFor="city">Review</label>
           <textarea
             id="city"
@@ -103,10 +96,17 @@ const AddReview = () => {
             {...register("review", { required: true })}
           />
         </div>
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          color2={"#ffd700"}
+          className=" space-x-3 space-y-3"
+        />
         <input
           type="submit"
           value="Submit Review"
-          className="btn bg-main hover:bg-hover border-none hover:border my-10"
+          className="btn w-3/5 bg-main hover:bg-hover border-none hover:border my-10"
         />
       </form>
     </div>

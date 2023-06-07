@@ -13,8 +13,12 @@ const AllProducts = () => {
   const [user, loading] = useAuthState(auth);
   const [admin] = useAdmin(user);
 
-  const { data: tools, isLoading } = useQuery("allTools", () =>
-    fetch("https://sawland.onrender.com/tools").then((res) => res.json())
+  const { data: tools, isLoading } = useQuery(
+    "allTools",
+    async () =>
+      await fetch("https://sawland.onrender.com/tools").then((res) =>
+        res.json()
+      )
   );
 
   if (isLoading) {

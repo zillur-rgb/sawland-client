@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "./Loading";
 import { signOut } from "firebase/auth";
+import { useQuery } from "react-query";
 
 const Navbar = () => {
-  const [user, loading] = useAuthState(auth);
-  console.log(user);
-  if (loading) {
-    return <Loading />;
-  }
+  const [user] = useAuthState(auth);
+  const { data: userData } = useQuery("allUsers", () =>
+    fetch(`https://sawland.onrender.com/users/${user.email}`).then((res) =>
+      res.json()
+    )
+  );
   return (
     <div className="navbar my-15 bg-base-100 w-full lg:w-3/4 mx-auto">
       <div className="navbar-start">
-        <Link to="/" className=" text-main btn btn-ghost normal-case text-2xl">
+        <Link to="/" className=" text-main font-bold normal-case text-2xl">
           Sawland
         </Link>
       </div>
@@ -44,7 +46,7 @@ const Navbar = () => {
               <Link to="/about">Portfolio</Link>
             </li> */}
             <li className="flex items-center">
-              {user ? `Hello` : ""}
+              {userData ? `Hello ${userData?.name}` : "Welcome"}
               {user ? (
                 <button
                   onClick={() => {
