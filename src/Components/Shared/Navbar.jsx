@@ -9,11 +9,17 @@ import { useQuery } from "react-query";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
-  const { data: userData } = useQuery("allUsers", () =>
-    fetch(`https://sawland.onrender.com/users/${user.email}`).then((res) =>
-      res.json()
-    )
+  const { data: userData } = useQuery(
+    "users",
+    async () =>
+      await fetch(`https://sawland.onrender.com/users/${user?.email}`).then(
+        (res) => res.json()
+      )
   );
+
+  // if (!user) {
+  //   return <Loading />; // Display loading state until the data is fetched
+  // }
   return (
     <div className="navbar my-15 bg-base-100 w-full lg:w-3/4 mx-auto">
       <div className="navbar-start">
@@ -46,7 +52,7 @@ const Navbar = () => {
               <Link to="/about">Portfolio</Link>
             </li> */}
             <li className="flex items-center">
-              {userData ? `Hello ${userData?.name}` : "Welcome"}
+              {userData ? `Hello ${userData?.name}` : ""}
               {user ? (
                 <button
                   onClick={() => {

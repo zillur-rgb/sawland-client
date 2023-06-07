@@ -5,7 +5,7 @@ import Loading from "../Shared/Loading";
 const NewProducts = () => {
   // const { tools } = useContext(ToolsContext);
 
-  const { data: tools, isLoading } = useQuery("allTools", () =>
+  const { data: tools, isLoading } = useQuery("newTools", () =>
     fetch("https://sawland.onrender.com/tools").then((res) => res.json())
   );
 

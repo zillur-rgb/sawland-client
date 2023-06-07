@@ -10,24 +10,30 @@ const MyProfile = () => {
   const [update, setUpdate] = useState(true);
   const [user] = useAuthState(auth);
 
-  const { data: userData, isLoading } = useQuery("allTools", () =>
-    fetch(`https://sawland.onrender.com/users/${user.email}`).then((res) =>
-      res.json()
-    )
+  const { data: userData, isLoading } = useQuery(
+    "myProfile",
+    async () =>
+      await fetch(`https://sawland.onrender.com/users/${user?.email}`).then(
+        (res) => res.json()
+      )
   );
-  const [name, setName] = useState("");
-  const [city, setCity] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [country, setCountry] = useState("");
+  const [name, setName] = useState(userData?.name ? userData?.name : "");
+  const [city, setCity] = useState(userData?.city ? userData?.city : "");
+  const [postcode, setPostcode] = useState(
+    userData?.postcode ? userData?.postcode : ""
+  );
+  const [country, setCountry] = useState(
+    userData?.country ? userData?.country : ""
+  );
 
   const onSubmit = (e) => {
     e.preventDefault();
     const updatedData = {
       email: userData.email,
-      name: name,
-      city: city,
-      postcode: postcode,
-      country: country,
+      name: name || userData?.name,
+      city: city || userData?.city,
+      postcode: postcode || userData?.postcode,
+      country: country || userData?.country,
     };
 
     fetch(`https://sawland.onrender.com/users/${user?.email}`, {
@@ -40,8 +46,8 @@ const MyProfile = () => {
       .then((res) => res.json())
       .then((update) => {
         toast.success("Profile updated");
-        setUpdate(false);
       });
+    setUpdate(false);
   };
 
   if (isLoading) {
@@ -66,7 +72,7 @@ const MyProfile = () => {
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               id="name"
               disabled={update ? true : false}
-              value={update ? userData?.name : name}
+              value={name}
               onChange={({ target }) => setName(target.value)}
               placeholder="name"
             />
@@ -75,7 +81,7 @@ const MyProfile = () => {
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              value={userData?.email}
+              value={userData?.email || " "}
               readOnly
               className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-none"
             />
@@ -85,10 +91,10 @@ const MyProfile = () => {
             <div className="flex flex-col">
               <label htmlFor="city">City</label>
               <input
-                value={update ? userData?.city : city}
+                value={city}
                 onChange={({ target }) => setCity(target.value)}
                 id="city"
-                disabled={update ? true : false}
+                disabled={update}
                 placeholder="city"
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />
@@ -97,7 +103,7 @@ const MyProfile = () => {
               <label htmlFor="postcode">Postcode</label>
               <input
                 id="postcode"
-                value={update ? userData?.postcode : postcode}
+                value={postcode}
                 disabled={update ? true : false}
                 onChange={({ target }) => setPostcode(target.value)}
                 placeholder="postcode"
@@ -110,7 +116,7 @@ const MyProfile = () => {
                 id="country"
                 placeholder="country"
                 disabled={update ? true : false}
-                value={update ? userData?.country : country}
+                value={country}
                 onChange={({ target }) => setCountry(target.value)}
                 className="my-10 p-10 border-text border rounded-lg border-opacity-20 focus:outline-hover"
               />

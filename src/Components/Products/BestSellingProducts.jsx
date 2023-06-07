@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Loading from "../Shared/Loading";
 
 const BestSellingProducts = () => {
-  const { data: tools, isLoading } = useQuery("allTools", () =>
+  const { data: tools, isLoading } = useQuery("bestTools", () =>
     fetch("https://sawland.onrender.com/tools").then((res) => res.json())
   );
   if (tools?.length < 1) {
