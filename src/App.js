@@ -16,7 +16,13 @@ function App() {
         <Footer />
         {/* </QueryClientProvider> */}
       </ToolsProvider>
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        hideProgressBar={true}
+        closeOnClick
+        pauseOnHover={false}
+        theme="colored"
+      />
     </div>
   );
 }

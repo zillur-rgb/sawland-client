@@ -1,6 +1,6 @@
 module.exports = {
   daisyui: {
-    themes: ["cupcake", "dark", "cmyk"],
+    themes: false,
   },
   plugins: {
     tailwindcss: {},
